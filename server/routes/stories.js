@@ -18,6 +18,14 @@ const router  = express.Router();
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
+router.get('/', (req, res) => {
+  res.send('Home Page');
+});
+
+router.post('/', (req, res) => {
+  res.send('New Story Created!')
+});
+
 router.get('/:story_id', (req, res) => {
   res.send(`Story: ${req.params.story_id} Page`)
 });
