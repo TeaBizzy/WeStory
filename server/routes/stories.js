@@ -24,7 +24,8 @@ router.get("/", (req, res) => {
   if (!isLoggedIn) {
     return res.redirect("/login");
   }
-  res.send("Home Page");
+
+  res.render('../views/index.ejs');
 });
 
 router.get("/:id", (req, res) => {
@@ -36,7 +37,7 @@ router.get("/:id", (req, res) => {
     return res.redirect("/login");
   }
 
-  res.send(`Story: ${req.params.story_id} Page`);
+  res.render('../views/story.ejs');
 });
 
 // ___________________________________________________________________________ //
