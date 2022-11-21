@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
     return res.redirect('/login');
   }
 
-  res.send(`User: ${req.params.id} Stories`);
+  res.render('../views/profile.ejs');
 });
 
 
