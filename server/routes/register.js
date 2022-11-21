@@ -21,16 +21,16 @@ const router  = express.Router();
 router.get('/', (req, res) => {
   const isLoggedIn = false;
 
-  if(isLoggedIn) {
+  if (isLoggedIn) {
     res.redirect('/stories');
     return;
   }
 
-  res.send('Register Page')
+  res.send('Register Page');
 });
 
 router.post('/', (req, res) => {
-  res.redirect('/stories')
+  res.redirect('/stories');
 });
 
 

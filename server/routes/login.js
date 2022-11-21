@@ -22,7 +22,7 @@ router.get('/', (req, res) => {
   // TODO: Implement session cookie
   const isLoggedIn = false;
 
-  if(isLoggedIn) {
+  if (isLoggedIn) {
     res.redirect('/stories');
     return;
   }
@@ -31,7 +31,7 @@ router.get('/', (req, res) => {
 });
 
 router.post('/', (req, res) => {
-  res.redirect('/stories')
+  res.redirect('/stories');
 });
 
 

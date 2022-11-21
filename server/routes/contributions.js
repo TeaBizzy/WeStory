@@ -19,16 +19,16 @@ const router  = express.Router();
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/', (req, res) => {
-  res.send('Contributions Loaded')
+  res.send('Contributions Loaded');
 });
 
 router.post('/', (req, res) => {
-  res.send('Contribution Created!')
+  res.send('Contribution Created!');
 });
 
 
 router.put('/:id', (req, res) => {
-  res.send(`Contribution: ${req.params.id} has been modified!`)
+  res.send(`Contribution: ${req.params.id} has been modified!`);
 });
 
 
