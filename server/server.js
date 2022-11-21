@@ -40,15 +40,15 @@ app.use(express.static('public'));
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
-const upvotesApiRoutes = require('./routes/upvotes-api');
+const upvoteApiRoutes = require('./routes/upvotes-api');
 const widgetApiRoutes = require('./routes/widgets-api');
+const storieApiRoutes = require('./routes/stories-api');
 const usersRoutes = require('./routes/users');
 const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
 const registerRoutes = require('./routes/register');
 const storiesRoutes = require('./routes/stories');
-const storiesApiRoutes = require('./routes/stories-api');
-const contributionsApiRoutes = require('./routes/contributions-api');
+const contributionApiRoutes = require('./routes/contributions-api');
 const defaultRoutes = require('./routes/default');
 
 
@@ -58,16 +58,20 @@ const defaultRoutes = require('./routes/default');
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
+
+// API Routers
 app.use('/api/users', userApiRoutes);
-app.use('/api/upvotes', userApiRoutes);
+app.use('/api/upvotes', upvoteApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
-app.use('/api/stories', storiesApiRoutes);
+app.use('/api/stories', storieApiRoutes);
+app.use('/api/contributions', contributionApiRoutes);
+
+// Document Routes
 app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
 app.use('/register', registerRoutes);
 app.use('/stories', storiesRoutes);
-app.use('/api/contributions', contributionsApiRoutes);
 app.use('/', defaultRoutes);
 // Note: mount other resources here, using the same pattern above
 

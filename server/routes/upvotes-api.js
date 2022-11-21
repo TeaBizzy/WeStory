@@ -2,8 +2,8 @@
 // *----------------------------- Documentation -----------------------------* //
 /*
 * All routes for Stories API are defined here
-* Since this file is loaded in server.js into /api/upvotes/
-* these routes are mounted onto /api/upvotes/
+* Since this file is loaded in server.js into /api/upvotes
+* these routes are mounted onto /api/upvotes
 * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
 */
 
