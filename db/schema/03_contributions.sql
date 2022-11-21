@@ -1,0 +1,8 @@
+DROP TABLE IF EXISTS contributions CASCADE;
+CREATE TABLE contributions (
+  id SERIAL PRIMARY KEY NOT NULL,
+  owner_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  story_id INTEGER REFERENCES stories(id) ON DELETE CASCADE,
+
+  content VARCHAR(160) NOT NULL
+  );
