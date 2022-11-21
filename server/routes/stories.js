@@ -26,7 +26,6 @@ router.get("/", (req, res) => {
   }
 
   res.render('../views/index.ejs');
-  // res.send('Home Page');
 });
 
 router.get("/:id", (req, res) => {
@@ -38,7 +37,7 @@ router.get("/:id", (req, res) => {
     return res.redirect("/login");
   }
 
-  res.send(`Story: ${req.params.story_id} Page`);
+  res.render('../views/story.ejs');
 });
 
 // ___________________________________________________________________________ //
