@@ -23,11 +23,11 @@ router.post('/', (req, res) => {
 });
 
 router.delete('/:user_id', (req, res) => {
-  res.send('Delete from the upvotes by user_id');
+  res.send('Delete from the upvotes table by user_id');
 });
 
 router.delete('/:contribution_id', (req, res) => {
-  res.send('Delete from the upvotes by contribution_id');
+  res.send('Delete from the upvotes table by contribution_id');
 });
 
 
