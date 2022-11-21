@@ -1,10 +1,10 @@
 const db = require('../connection');
 
-const register = (user) => {
-  const userInfo = [user.username, user.password];
+const addStory = (story, user) => {
+  const storyInfo = [user.id, story.title, story.content];
   return db.query(`
-  INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *;
-  `, userInfo);
+  INSERT INTO users (creator_id, title, content) VALUES ($1, $2, $3) RETURNING *;
+  `, storyInfo);
 };
 
-module.exports = { register };
+module.exports = { addStory };
