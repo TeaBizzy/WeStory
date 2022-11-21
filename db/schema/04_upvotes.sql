@@ -1,0 +1,5 @@
+DROP TABLE IF EXISTS upvotes CASCADE;
+CREATE TABLE upvotes (
+  contribution_id	INTEGER REFERENCES contributions (id) ON DELETE CASCADE,
+  user_id	INTEGER REFERENCES users (id) ON DELETE CASCADE
+);
