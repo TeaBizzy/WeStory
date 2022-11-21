@@ -46,6 +46,7 @@ const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
 const registerRoutes = require('./routes/register');
 const homeRoutes = require('./routes/home');
+const storiesRoutes = require('./routes/stories');
 
 
 
@@ -61,6 +62,7 @@ app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);
 app.use('/register', registerRoutes);
+app.use('/stories/', storiesRoutes);
 // Note: mount other resources here, using the same pattern above
 
 
