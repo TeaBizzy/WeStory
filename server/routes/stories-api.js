@@ -14,13 +14,23 @@
 const express = require('express');
 const db = require('../../db/connection');
 const router  = express.Router();
+const getStories = require('../../db/queries/stories');
 
 
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/', (req, res) => {
-  res.send('Query stories table for all stories');
+  getStories.getStories()
+    .then(story => {
+      res.json({ story });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
+  // res.send('Query stories table for all stories');
 });
 
 router.post('/', (req, res) => {
