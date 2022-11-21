@@ -1,10 +1,11 @@
 const db = require('../connection');
 
-const getUsers = (username) => {
+const getUsers = (user) => {
   return db.query(`
-  SELECT password FROM users
+  SELECT * FROM users
   WHERE username = $1
-  `, [username])
+  AND password = $2
+  `, [user.username, user.password])
     .then(data => {
       return data.rows;
     });
