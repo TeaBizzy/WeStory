@@ -19,7 +19,7 @@ const router  = express.Router();
 // *-------------------------------- Routing --------------------------------* //
 
 router.post('/', (req, res) => {
-  res.send('Logged Out')
+  res.redirect('/login')
 });
 
 

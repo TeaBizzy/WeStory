@@ -19,11 +19,18 @@ const router  = express.Router();
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/', (req, res) => {
+  const isLoggedIn = false;
+
+  if(isLoggedIn) {
+    res.redirect('/stories');
+    return;
+  }
+
   res.send('Register Page')
 });
 
 router.post('/', (req, res) => {
-  res.send('You are now registered!')
+  res.redirect('/stories')
 });
 
 

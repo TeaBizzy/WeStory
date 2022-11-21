@@ -19,11 +19,19 @@ const router  = express.Router();
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/', (req, res) => {
+  // TODO: Implement session cookie
+  const isLoggedIn = false;
+
+  if(isLoggedIn) {
+    res.redirect('/stories');
+    return;
+  }
+
   res.send('Login Page');
 });
 
 router.post('/', (req, res) => {
-  res.send('Logged In!')
+  res.redirect('/stories')
 });
 
 

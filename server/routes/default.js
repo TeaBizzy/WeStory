@@ -19,7 +19,7 @@ const router  = express.Router();
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/*', (req, res) => {
-  res.send('Invalid URL... Redirecting to /stories');
+  res.redirect('/stories');
 });
 
 

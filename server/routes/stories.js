@@ -19,14 +19,28 @@ const router  = express.Router();
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/', (req, res) => {
+  const isLoggedIn = false;
+
+  if(!isLoggedIn) {
+    res.redirect('/login');
+    return;
+  }
+
   res.send('Home Page');
 });
 
 router.post('/', (req, res) => {
-  res.send('New Story Created!')
+  res.redirect('/stories/:story_id');
 });
 
 router.get('/:story_id', (req, res) => {
+  const isLoggedIn = false;
+
+  if(!isLoggedIn) {
+    res.redirect('/login');
+    return;
+  }
+
   res.send(`Story: ${req.params.story_id} Page`)
 });
 
