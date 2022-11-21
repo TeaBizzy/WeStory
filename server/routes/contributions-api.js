@@ -31,6 +31,10 @@ router.put('/:id', (req, res) => {
   res.send(`Modify contribution: ${req.params.id} & display it`);
 });
 
+router.delete('/:id', (req, res) => {
+  res.send(`Delete contribution: ${req.params.id} & remove it from document`);
+});
+
 
 // ___________________________________________________________________________ //
 // *-------------------------------- Exports --------------------------------* //
