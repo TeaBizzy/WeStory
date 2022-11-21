@@ -46,6 +46,7 @@ const loginRoutes = require('./routes/login');
 const logoutRoutes = require('./routes/logout');
 const registerRoutes = require('./routes/register');
 const storiesRoutes = require('./routes/stories');
+const storiesApiRoutes = require('./routes/stories-api');
 const contributionsRoutes = require('./routes/contributions-api');
 const defaultRoutes = require('./routes/default');
 
@@ -58,6 +59,7 @@ const defaultRoutes = require('./routes/default');
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
 app.use('/api/users', userApiRoutes);
 app.use('/api/widgets', widgetApiRoutes);
+app.use('/api/stories', storiesApiRoutes);
 app.use('/users', usersRoutes);
 app.use('/login', loginRoutes);
 app.use('/logout', logoutRoutes);

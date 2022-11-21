@@ -1,9 +1,9 @@
 // ___________________________________________________________________________ //
 // *----------------------------- Documentation -----------------------------* //
 /*
-* All routes for Stories are defined here
-* Since this file is loaded in server.js into /stories
-* these routes are mounted onto /stories
+* All routes for Stories API are defined here
+* Since this file is loaded in server.js into /api/stories
+* these routes are mounted onto /api/stories
 * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
 */
 
@@ -19,25 +19,23 @@ const router  = express.Router();
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/', (req, res) => {
-  const isLoggedIn = false;
-
-  if (!isLoggedIn) {
-    res.redirect('/login');
-    return;
-  }
-
-  res.send('Home Page');
+  res.send('Query stories table for all stories');
 });
 
-router.get('/:story_id', (req, res) => {
-  const isLoggedIn = false;
+router.post('/', (req, res) => {
+  res.send('Insert a new story to the stories table');
+});
 
-  if (!isLoggedIn) {
-    res.redirect('/login');
-    return;
-  }
+router.get('/:id', (req, res) => {
+  res.send('Query stories table for specified id');
+});
 
-  res.send(`Story: ${req.params.story_id} Page`);
+router.put('/:id', (req, res) => {
+  res.send(`Modify story: ${req.params.id} & display it`);
+});
+
+router.get('/user/:id', (req, res) => {
+  res.send('Query stories table for stories by specified user');
 });
 
 
