@@ -1,6 +1,6 @@
 const db = require('../connection');
 
-const getUsers = (user) => {
+const getUser = (user) => {
   return db.query(`
   SELECT * FROM users
   WHERE username = $1
@@ -11,4 +11,4 @@ const getUsers = (user) => {
     });
 };
 
-module.exports = { getUsers };
+module.exports = { getUser };
