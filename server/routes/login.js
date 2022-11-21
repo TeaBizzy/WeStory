@@ -12,6 +12,7 @@
 // *----------------------------- Configuration -----------------------------* //
 
 const express = require('express');
+const { use } = require('./users-api');
 const router  = express.Router();
 
 
@@ -39,3 +40,35 @@ router.post('/', (req, res) => {
 // *-------------------------------- Exports --------------------------------* //
 
 module.exports = router;
+
+
+// ___________________________________________________________________________ //
+// *-------------------------- TEST HELPERS DELETE --------------------------* //
+
+// TODO: Remove this, once query is implemented.
+const getUserByEmail = function(email, usersDB) {
+  for (const user in usersDB) {
+    if(user.email === email) {
+      return user;
+    }
+  }
+}
+
+
+// ___________________________________________________________________________ //
+// *------------------------- TEST CONSTANTS DELETE -------------------------* //
+// NOTE: Delete these once queries are properly implemented.
+const TEST_USERS_DB = [
+  {
+    email: 'foo@bar.com',
+    password: 'password'
+  },
+  {
+    email: 'steve@o.com',
+    password: 'password'
+  },
+  {
+    email: 'shrek@swamp.com',
+    password: 'password'
+  },
+]
