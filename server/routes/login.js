@@ -31,8 +31,7 @@ router.get('/', (req, res) => {
     return;
   }
 
-  // Render login page
-  res.send('Login Page');
+  res.render('../views/login.ejs');
 });
 
 // Logs the user in
