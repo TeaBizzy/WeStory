@@ -19,11 +19,12 @@ const router  = express.Router();
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/:id', (req, res) => {
-  const isLoggedIn = false;
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
 
   if (!isLoggedIn) {
-    res.redirect('/login');
-    return;
+    return res.redirect('/login');
   }
 
   res.send(`User: ${req.params.id} Stories`);
