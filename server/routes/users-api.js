@@ -19,10 +19,10 @@ router.get('/', (req, res) => {
   //       .status(500)
   //       .json({ error: err.message });
   //   });
+});
 
-  router.post('/', (req, res) => {
-    res.send('Insert a new user to the users table');
-  });
+router.post('/', (req, res) => {
+  res.send('Insert a new user to the users table');
 });
 
 module.exports = router;
