@@ -1,0 +1,138 @@
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFA726;
+  height: 100px;
+  width: 100%;
+  position: fixed;
+}
+
+.logo {
+  padding-left: 48px;
+  font-family: 'Lobster', cursive;
+  color: #FFFFFF;
+  font-size: 40px;
+}
+
+.logo:hover {
+  cursor: pointer;
+}
+
+.user {
+  display: flex;
+  color: #E65100;
+  font-family: 'Bebas Neue', cursive;
+  padding-right: 48px;
+}
+
+.logout {
+  font-size: 40px;
+}
+
+.logout:hover {
+  cursor: pointer;
+}
+
+.fa-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: solid #FFFFFF;
+  border-radius: 30px;
+  font-size: 30px;
+  margin-right: 20px;
+  padding: 0.3em;
+  width: 50px;
+  height: 50px;
+}
+
+.fa-user:hover {
+  cursor:pointer;
+}
+
+.contribute-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #E65100;
+  border-radius: 30px;
+  outline: solid #FFFFFF;
+  width: 100px;
+  height: 100px;
+  margin-top: 50px;
+  background-color: #FFA726;
+  box-shadow: 0 6px 10px 0px gray;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+@keyframes bounce-down {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(15px); }
+  100% { transform: translateY(0); }
+}
+
+.contribute-button:hover {
+  cursor: pointer;
+  animation-name: bounce-down;
+  animation-timing-function: ease;
+}
+
+.contribute {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 25px;
+}
+
+.fa-pencil {
+  font-size: 40px;
+}
+
+footer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+  bottom: 0;
+  background-color: #FFA726;
+  position: fixed;
+}
+
+.fa-arrow-up {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #E65100;
+  background-color: #FFA726;
+  box-shadow: 0 6px 10px 0px gray;
+  border-radius: 50px;
+  font-size: 80px;
+  outline: solid #FFFFFF;
+  padding: 0.3em;
+  width: 100px;
+  height: 100px;
+  margin-bottom: 50px;
+  animation-duration: 2s;
+  animation-iteration-count: infinite;
+}
+
+.fa-arrow-up:hover {
+  cursor: pointer;
+  animation-name: bounce-up;
+  animation-timing-function: ease;
+}
+
+@keyframes bounce-up {
+  0%   { transform: translateY(0); }
+  50%  { transform: translateY(-15px); }
+  100% { transform: translateY(0); }
+}
