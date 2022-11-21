@@ -24,7 +24,8 @@ app.set('view engine', 'ejs');
 // The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(cookieSession({
   name: 'session',
-  keys: ['key1, key2, key3']
+  keys: ['key1, key2, key3'],
+  maxAge: 24 * 60 * 60 * 1000
 }));
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
