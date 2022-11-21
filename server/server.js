@@ -1,3 +1,6 @@
+// ___________________________________________________________________________ //
+// *----------------------------- Configuration -----------------------------* //
+
 // load .env data into process.env
 require('dotenv').config();
 
@@ -11,9 +14,13 @@ const app = express();
 
 app.set('view engine', 'ejs');
 
+
+// ________________________________________________________________________ //
+// *----------------------------- Middleware -----------------------------* //
+
 // Load the logger first so all (static) HTTP requests are logged to STDOUT
 // 'dev' = Concise output colored by response status for development use.
-//         The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
+// The :status token will be colored red for server error codes, yellow for client error codes, cyan for redirection codes, and uncolored for all other codes.
 app.use(morgan('dev'));
 app.use(express.urlencoded({ extended: true }));
 app.use(
@@ -26,12 +33,20 @@ app.use(
 );
 app.use(express.static('public'));
 
+
+
+// _____________________________________________________________________ //
+// *---------------------------- Resources ----------------------------* //
 // Separated Routes for each Resource
 // Note: Feel free to replace the example routes below with your own
 const userApiRoutes = require('./routes/users-api');
 const widgetApiRoutes = require('./routes/widgets-api');
 const usersRoutes = require('./routes/users');
 
+
+
+// _____________________________________________________________________ //
+// *----------------------------- Routing -----------------------------* //
 // Mount all resource routes
 // Note: Feel free to replace the example routes below with your own
 // Note: Endpoints that return data (eg. JSON) usually start with `/api`
@@ -43,10 +58,14 @@ app.use('/users', usersRoutes);
 // Home page
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
-
+// TODO: Move to it's own route!
 app.get('/', (req, res) => {
   res.render('index');
 });
+
+
+// _______________________________________________________________________ //
+// *----------------------------- Listening -----------------------------* //
 
 app.listen(PORT, () => {
   console.log(`Example app listening on port ${PORT}`);
