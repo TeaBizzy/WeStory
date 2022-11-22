@@ -24,7 +24,9 @@ const addStory = function(storyData) {
       </a>
       </div>
       <div class="story-content">
-      <img src="${storyData.cover_url} class="cover">
+      <div>
+        <img src="${storyData.cover_url}" class="cover">
+      </div>
       <p class="story-paragraph">${storyData.content}</p>
       </div>
     </article>
