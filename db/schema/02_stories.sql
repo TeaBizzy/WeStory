@@ -5,5 +5,6 @@ CREATE TABLE stories (
 
   title VARCHAR(255) NOT NULL,
   content VARCHAR(160) NOT NULL,
+  cover_url VARCHAR(255) NOT NULL,
   is_completed BOOLEAN DEFAULT FALSE
 );

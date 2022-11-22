@@ -2,8 +2,12 @@ const db = require('../connection');
 
 const getContributions = (story) => {
   return db.query(`
-  SELECT * FROM contributions
+  SELECT DISTINCT contributions.id as contribution_id, contributions.story_id, owner_id, users.username as owner_username, count(upvotes.*) as upvotes, contributions.content
+  FROM contributions
+  JOIN users ON users.id = owner_id
+  JOIN upvotes ON upvotes.contribution_id = contributions.id
   WHERE story_id = $1
+  GROUP BY contributions.id, users.id;
   `, [story.id])
     .then(data => {
       return data.rows;
