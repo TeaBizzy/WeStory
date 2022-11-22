@@ -5,6 +5,7 @@ $(document).ready(function() {
 
 // Renders each story to the page
 const renderStories = function (stories) {
+  console.log(stories)
   for (const story of stories) {
     const $story = addStory(story);
     $("#story-container").prepend($story);
@@ -20,7 +21,7 @@ const addStory = function (storyData) {
       <div class="story-header">
       <span class="story-title">${storyData.title}</span>
       <a href="/users/${storyData.creator_id}">
-        <span class="story-creator-handle">@creator-username</span>
+        <span class="story-creator-handle">@${storyData.username}</span>
       </a>
       </div>
       <div class="story-content">
