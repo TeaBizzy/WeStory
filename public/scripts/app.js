@@ -16,4 +16,5 @@ $(document).ready(function() {
     </article>
   `
   $('#story-containter').prepend($markup);
+  
 })

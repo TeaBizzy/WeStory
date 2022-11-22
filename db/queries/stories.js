@@ -9,4 +9,21 @@ const getStories = () => {
     });
 };
 
-module.exports = { getStories };
+const addStory = (story) => {
+  const storyInfo = [story.user_id, story.title, story.content];
+  return db.query(`
+  INSERT INTO stories (creator_id, title, content) VALUES ($1, $2, $3) RETURNING *;
+  `, storyInfo);
+};
+
+const getStoryById = (story) => {
+  return db.query(`
+  SELECT * FROM stories
+  WHERE id = ${story.id};
+  `)
+    .then(data => {
+      return data.rows;
+    });
+};
+
+module.exports = { getStories, addStory, getStoryById };
