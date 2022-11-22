@@ -204,7 +204,7 @@ textarea:focus {
 }
 
 .story {
-  margin: 10px 48px 3.5vw 48px;
+  margin: 10px 48px min(35px, 3.5vw) 48px;
   background-color: #EEEEEE;
   outline: solid #2196F3 2px;
   box-shadow: 5px 5px 4px gray;
@@ -259,6 +259,7 @@ textarea:focus {
   font-size: 2.5vw;
   margin-top: 2vw;
   margin-bottom: 2vw;
+  padding-right: 1vw;
 }
 
 .separator {
