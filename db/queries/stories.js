@@ -26,4 +26,16 @@ const getStoryById = (story) => {
     });
 };
 
-module.exports = { getStories, addStory, getStoryById };
+const getStoryByUserId = (user) => {
+  return db.query(`
+  SELECT * FROM stories
+  JOIN users ON users.id = creator_id
+  WHERE id = ${user.id}
+  GROUP BY creator_id;
+  `)
+    .then(data => {
+      return data.rows;
+    });
+};
+
+module.exports = { getStories, addStory, getStoryById, getStoryByUserId };

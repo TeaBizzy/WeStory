@@ -13,7 +13,7 @@
 
 const express = require('express');
 const router  = express.Router();
-const stories =require('../../db/queries/stories');
+const stories = require('../../db/queries/stories');
 
 
 // ___________________________________________________________________________ //
@@ -31,12 +31,30 @@ router.get('/', (req, res) => {
     });
 });
 
+// the parameters passed would be inputed by users and needs to be changed
 router.post('/', (req, res) => {
-  res.send('Insert a new story to the stories table');
+  stories.addStory({user_id: 1, title: 'hello', content: 'world'})
+    .then(story => {
+      res.json({ story });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
 
+// the id would be passed in when clicked on the container (the {id: 1} neeeds to be changed)
 router.get('/:id', (req, res) => {
-  res.send('Query stories table for specified id');
+  stories.getStoryById({id: 5})
+    .then(story => {
+      res.json({ story });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
 
 router.put('/:id', (req, res) => {
@@ -44,7 +62,15 @@ router.put('/:id', (req, res) => {
 });
 
 router.get('/user/:id', (req, res) => {
-  res.send('Query stories table for stories by specified user');
+  stories.getStoryByUserId({id: 1})
+    .then(story => {
+      res.json({ story });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
 
 
