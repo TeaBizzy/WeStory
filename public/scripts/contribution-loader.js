@@ -22,6 +22,7 @@ const loadContributions = function() {
 };
 
 const renderContributions = function(contributions) {
+  console.log(contributions)
   for (const contribution of contributions) {
     const newContribution = generateContribution(contribution);
     $('.contributions-container').prepend(newContribution);
@@ -35,13 +36,13 @@ const generateContribution = function(contribution) {
     <div class="contribution-header">
       <i class="fa-solid fa-user fa-contribution"></i>
       <a href="/users/${contribution.owner_id}">
-        <span class="contribution-creator-handle">@creator-username</span>
+        <span class="contribution-creator-handle">@${contribution.owner_username}</span>
       </a>
     </div>
     <div class="contribution-content">
       <div class="upvote-icons">
         <i class="fa-solid fa-heart"></i>
-        <span class="upvote-count">0</span>
+        <span class="upvote-count">${contribution.upvotes}</span>
       </div>
       <p class="contribution-paragraph">${contribution.content}</p>
     </div>
