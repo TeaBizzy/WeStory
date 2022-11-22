@@ -21,7 +21,6 @@ const queries = require('../../db/queries/contributions');
 
 router.get('/:story_id', (req, res) => {
   const storyId = req.params.story_id;
-  console.log(storyId)
 
   queries.getContributions(storyId)
     .then((contributions) =>
