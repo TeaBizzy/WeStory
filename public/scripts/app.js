@@ -5,7 +5,6 @@ $(document).ready(function() {
 
 // Renders each story to the page
 const renderStories = function (stories) {
-  console.log(stories)
   for (const story of stories) {
     const $story = addStory(story);
     $("#story-container").prepend($story);
@@ -14,7 +13,6 @@ const renderStories = function (stories) {
 
 // Populates story html template using the given story data. Returns the finished html
 const addStory = function (storyData) {
-  console.log(storyData);
   const markup = `
   <a href="/stories/${storyData.id}">
     <article class="story">
