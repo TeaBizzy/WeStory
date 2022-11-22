@@ -12,6 +12,7 @@
 
 const express = require("express");
 const router = express.Router();
+const stories = require('../../db/queries/stories');
 
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
@@ -24,8 +25,18 @@ router.get("/", (req, res) => {
   if (!isLoggedIn) {
     return res.redirect("/login");
   }
-
-  res.render('../views/index.ejs');
+  stories.getStories()
+    .then(story => {
+      let storyList = story;
+      console.log(storyList);
+      res.render('../views/index.ejs', storyList);
+      // .json({ story })
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
 
 router.get("/:id", (req, res) => {

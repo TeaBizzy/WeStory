@@ -7,14 +7,12 @@
 * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
 */
 
-
 // ___________________________________________________________________________ //
 // *----------------------------- Configuration -----------------------------* //
 
 const express = require('express');
 const router  = express.Router();
 const stories = require('../../db/queries/stories');
-
 
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
