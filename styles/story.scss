@@ -176,6 +176,193 @@ nav {
   height: 80px;
 }
 
+.new-contribution {
+  margin: 40px 48px 0px 48px;
+  background-color: #EEEEEE;
+  outline: solid #2196F3 2px;
+  height: 220px;
+  box-shadow: 5px 5px 4px gray;
+}
+
+form {
+  width: 100%;
+}
+
+#contribution-text {
+  background-color: #EEEEEE;
+  width: 100%;
+  height: 180px;
+  font-family: 'Quicksand', cursive;
+  font-size: 26px;
+  border: hidden;
+  resize: none;
+}
+
+.form-icons {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  margin-top: -15px;
+}
+
+.fa-check {
+  color: #E65100;
+  background-color: #FFA726;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: solid #FFFFFF;
+  border-radius: 30px;
+  font-size: 25px;
+  margin-right: 20px;
+  width: 40px;
+  height: 40px; 
+  box-shadow: 0 6px 10px 0px gray;
+}
+
+.fa-check:hover {
+  cursor: pointer;
+}
+
+.fa-trash-can {
+  color: #E65100;
+  background-color: #FFA726;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: solid #FFFFFF;
+  border-radius: 30px;
+  font-size: 25px;
+  margin-right: 10px;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 6px 10px 0px gray;
+}
+
+.fa-trash-can:hover {
+  cursor: pointer;
+}
+
+textarea:focus {
+  outline: none;
+}
+
+.contributions-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.contribution {
+  margin: 40px 48px 40px 48px;
+  background-color: #EEEEEE;
+  outline: solid #2196F3 2px;
+  box-shadow: 5px 5px 4px gray;
+  height: 100%;
+}
+
+.contribution-header {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0px 0px 10px;
+}
+
+.fa-contribution {
+  color: #FFFFFF;
+  background-color: #2196F3;
+  box-shadow: 0 6px 10px 0px gray;
+}
+
+.contribution-creator-handle {
+  font-family: 'Quicksand', cursive;
+  margin: 10px 10px;
+  color: #FFA726;
+  font-size: 20px;
+}
+
+.contribution-creator-handle:hover {
+  cursor: pointer;
+}
+
+.contribution-content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin: 0px 48px 0px 48px;
+}
+
+.upvote-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 20px 0px -35px;
+}
+
+.fa-heart {
+  font-size: 40px;
+  color: #FFA726;
+}
+
+.fa-heart:hover {
+  cursor: pointer;
+}
+
+.upvote-count {
+  font-family: 'Bebas Neue', cursive;
+  color: #FFA726;
+  font-size: 30px;
+}
+
+.contribution-paragraph {
+  font-family: 'Quicksand', cursive;
+  font-size: 26px;
+  margin-top: 5px;
+}
+
+.fa-check {
+  color: #E65100;
+  background-color: #FFA726;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: solid #FFFFFF;
+  border-radius: 30px;
+  font-size: 30px;
+  margin-right: 20px;
+  width: 40px;
+  height: 40px; 
+  box-shadow: 0 6px 10px 0px gray;
+}
+
+.approve {
+  font-family: 'Bebas Neue', cursive;
+  font-size: 20px;
+}
+
+.contribution-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px;
+}
+
+.approve-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #E65100;
+  border-radius: 30px;
+  outline: solid #FFFFFF;
+  width: 70px;
+  height: 70px;
+  background-color: #FFA726;
+  box-shadow: 0 6px 10px 0px gray;
+  margin: -50px 20px 20px 0px;
+}
+
+.approve-button:hover {
+  cursor: pointer;
+}
+
 footer {
   display: flex;
   align-items: center;
