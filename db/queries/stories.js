@@ -3,7 +3,8 @@ const generateRandomCover = require('../../public/scripts/storyHelper');
 
 const getStories = () => {
   return db.query(`
-  SELECT * FROM stories;
+  SELECT stories.id, creator_id, users.username, title, cover_url, is_completed, content FROM stories
+  JOIN users ON users.id = creator_id;
   `)
     .then(data => {
       return data.rows;
