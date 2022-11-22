@@ -251,11 +251,12 @@ textarea:focus {
   height: 100%;
   width: 100%;
   object-fit: cover;
+  min-width: 155px;
 }
 
 .story-paragraph {
   font-family: "Quicksand", cursive;
-  font-size: 26px;
+  font-size: 2.5vw;
   margin-top: 30px;
 }
 
@@ -312,7 +313,15 @@ footer {
 
 
 @media screen and (min-width: 950px) {
+  .story-paragraph {
+    font-family: "Quicksand", cursive;
+    font-size: 26px;
+    margin-top: 30px;
+  }
+  .story-content {
+    max-height: 155px;
+  }
   .cover-content img {
-    max-height: 165px;
+    max-height: 155px;
   }
 }
