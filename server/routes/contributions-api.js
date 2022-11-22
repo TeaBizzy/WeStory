@@ -13,13 +13,25 @@
 
 const express = require('express');
 const router  = express.Router();
+const queries = require('../../db/queries/contributions');
 
 
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/:story_id', (req, res) => {
-  res.send('Query for contributions by story_id');
+  const storyId = req.params.story_id;
+  console.log(storyId)
+
+  queries.getContributions(storyId)
+    .then((contributions) =>
+        res.json({contributions})
+      )
+    .catch(err => {
+      res
+        .status(500)
+        .json({error: err.message});
+    })
 });
 
 router.post('/', (req, res) => {
