@@ -7,7 +7,6 @@
 * See: https://expressjs.com/en/guide/using-middleware.html#middleware.router
 */
 
-
 // ___________________________________________________________________________ //
 // *----------------------------- Configuration -----------------------------* //
 
@@ -15,14 +14,14 @@ const express = require('express');
 const router  = express.Router();
 const stories = require('../../db/queries/stories');
 
-
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
+// Returns a JSON object containing an array of story objects
 router.get('/', (req, res) => {
   stories.getStories()
-    .then(story => {
-      res.json({ story });
+    .then(stories => {
+      res.json({ stories });
     })
     .catch(err => {
       res
