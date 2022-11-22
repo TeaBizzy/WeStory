@@ -1,10 +1,10 @@
 const db = require('../connection');
 
-const getContributions = (story) => {
+const getContributions = (storyId) => {
   return db.query(`
   SELECT * FROM contributions
   WHERE story_id = $1
-  `, [story.id])
+  `, [storyId])
     .then(data => {
       return data.rows;
     });
