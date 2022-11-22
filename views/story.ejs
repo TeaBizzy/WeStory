@@ -19,10 +19,11 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/contribution-loader.js"></script>
   <script defer src="/scripts/composer.js"></script>
 </head>
 
-<body>
+<body data-storyid="<%= storyId %>">
   <nav>
     <a href="/stories"><span class="logo">WeStory</span></a>
     <div class="contribute-button">
@@ -81,6 +82,7 @@
               <i class="fa-solid fa-thumbs-up"></i>
             </div>
           </section>
+      </article>
     </section>
     <footer>
       <i class="fa-solid fa-arrow-up"></i>
