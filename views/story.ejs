@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>Home Page</title>
+
+  <meta charset="UTF-8" >
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" >
+
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css" integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=Lobster&family=Quicksand&display=swap" rel="stylesheet">
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" />
+  <link rel="stylesheet" href="/styles/story.css" />
+  <link rel="stylesheet" href="/styles/layout.css" />
+
+  <script src="/vendor/jquery-3.0.0.js"></script>
+  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/contribution-loader.js"></script>
+  <script defer src="/scripts/composer.js"></script>
+</head>
+
+<body data-storyid="<%= storyId %>">
+  <nav>
+    <a href="/stories"><span class="logo">WeStory</span></a>
+    <div class="contribute-button">
+      <span class="contribute">contribute</span>
+      <i class="fa-solid fa-pencil"></i>
+    </div>
+    <div class="user">
+      <a href="/users/<%= id %>"><i class="fa-solid fa-user"></i></a>
+      <a href="/logout"><span class="logout">Logout</span></a>
+    </div>
+  </nav>
+  <section class="story-container">
+    <article class="story">
+      <div class="story-header">
+        <div class="story-heading">
+          <span class="story-title">Lord of the Things</span>
+          <span class="story-creator-handle">@creator-username</span>
+        </div>
+          <span class="image">INSERT IMAGE</span>
+      </div>
+      <div class="story-content">
+        <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
+      </div>
+    </article>
+    <section class="toggle-contributions">
+      <span>View Contributions</span>
+    </section>
+    <section class="toggle-story">
+      <span>View Story</span>
+    </section>
+  <section class="new-contribution">
+    <form method="POST" action="">
+      <textarea name="text" id="contribution-text" placeholder="Start writing to contribute!"></textarea>
+    </form>
+    <div class="form-icons">
+      <i class="fa-solid fa-check"></i>
+      <i class="fa-regular fa-trash-can"></i>
+    </div>
+  </section>
+    <section class="contributions-container">
+      <article class="contribution">
+        <div class="contribution-header">
+            <i class="fa-solid fa-user fa-contribution"></i>
+          <span class="contribution-creator-handle">@creator-username</span>
+        </div>
+          <div class="contribution-content">
+            <div class="upvote-icons">
+              <i class="fa-solid fa-heart"></i>
+              <span class="upvote-count">0</span>
+            </div>
+            <p class="contribution-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
+          </div>
+          <section class="contribution-footer">
+            <div class="approve-button">
+              <span class="approve">Approve</span>
+              <i class="fa-solid fa-thumbs-up"></i>
+            </div>
+          </section>
+      </article>
+    </section>
+    <footer>
+      <i class="fa-solid fa-arrow-up"></i>
+    </footer>
+</body>
+
+</html>
