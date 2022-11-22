@@ -1,5 +1,5 @@
 // Client facing scripts here
-$(document).ready(function () {
+$(document).ready(function() {
   loadStory();
 });
 
@@ -24,7 +24,9 @@ const addStory = function (storyData) {
       </a>
       </div>
       <div class="story-content">
-      <i class="fa-solid fa-book"></i>
+      <div class="cover-content">
+        <img src="${storyData.cover_url}">
+      </div>
       <p class="story-paragraph">${storyData.content}</p>
       </div>
     </article>
