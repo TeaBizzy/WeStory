@@ -19,18 +19,19 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/composer.js"></script>
 </head>
 
 <body>
   <nav>
-    <a href="/stories"><span class="logo">WeStory</span></a>
+    <a href="/stories" style="text-decoration: none;"><span class="logo">WeStory</span></a>
     <div class="create-button">
       <span class="create">Create</span>
       <i class="fa-solid fa-pencil"></i>
     </div>
     <div class="user">
-      <a href="/users/<%= id %>"><i class="fa-solid fa-user"></i></a>
-      <a href="/logout"><span class="logout">Logout</span></a>
+      <a href="/users/<%= id %>" style="text-decoration: none;"><i class="fa-solid fa-user"></i></a>
+      <a href="/logout" style="text-decoration: none;"><span class="logout">Logout</span></a>
     </div>
   </nav>
   <span class="profile-header">Stories by @Username</span>
