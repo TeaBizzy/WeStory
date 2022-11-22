@@ -15,11 +15,11 @@ const renderStories = function (stories) {
 const addStory = function (storyData) {
   console.log(storyData);
   const markup = `
-  <a href="/stories/${storyData.id}">
+  <a href="/stories/${storyData.id}" style="text-decoration: none">
     <article class="story">
       <div class="story-header">
       <span class="story-title">${storyData.title}</span>
-      <a href="/users/${storyData.creator_id}">
+      <a href="/users/${storyData.creator_id}" style="text-decoration: none">
         <span class="story-creator-handle">@creator-username</span>
       </a>
       </div>
