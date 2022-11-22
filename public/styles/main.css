@@ -309,3 +309,10 @@ footer {
     transform: translateY(0);
   }
 }
+
+
+@media screen and (min-width: 950px) {
+  .cover-content img {
+    max-height: 165px;
+  }
+}
