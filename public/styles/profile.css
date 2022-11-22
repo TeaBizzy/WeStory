@@ -35,6 +35,7 @@ nav {
 
 .logout {
   font-size: 40px;
+  color: #E65100;
 }
 
 .logout:hover {
@@ -45,6 +46,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #E65100;
   outline: solid #FFFFFF;
   border-radius: 30px;
   font-size: 30px;
