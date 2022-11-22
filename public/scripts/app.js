@@ -24,7 +24,7 @@ const addStory = function(storyData) {
       </a>
       </div>
       <div class="story-content">
-      <i class="fa-solid fa-book"></i>
+      <img src="${storyData.cover_url} class="cover">
       <p class="story-paragraph">${storyData.content}</p>
       </div>
     </article>

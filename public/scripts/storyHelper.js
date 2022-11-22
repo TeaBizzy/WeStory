@@ -5,4 +5,5 @@ const generateRandomCover = () => {
   return bookIdCovers;
 };
 
+console.log(generateRandomCover());
 module.export = generateRandomCover;
