@@ -23,14 +23,14 @@
 
 <body>
   <nav>
-    <span class="logo">WeStory</span>
+    <a href="/stories"><span class="logo">WeStory</span></a>
     <div class="create-button">
       <span class="create">Create</span>
       <i class="fa-solid fa-pencil"></i>
     </div>
     <div class="user">
-      <i class="fa-solid fa-user"></i>
-      <span class="logout">Logout</span>
+      <a href="/users/<%= id %>"><i class="fa-solid fa-user"></i></a>
+      <a href="/logout"><span class="logout">Logout</span></a>
     </div>
   </nav>
   <span class="profile-header">Stories by @Username</span>
