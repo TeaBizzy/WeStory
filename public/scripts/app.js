@@ -13,17 +13,22 @@ const renderStories = function(stories) {
 
 // Populates story html template using the given story data. Returns the finished html
 const addStory = function(storyData) {
+  console.log(storyData);
   const markup = `
-  <a href="/stories/${storyData.id}"><article class="story">
-  <div class="story-header">
-  <span class="story-title">${storyData.title}</span>
-  <span class="story-creator-handle">@creator-username</span>
-  </div>
-  <div class="story-content">
-  <i class="fa-solid fa-book"></i>
-  <p class="story-paragraph">${storyData.content}</p>
-  </div>
-  </article></a>`;
+  <a href="/stories/${storyData.id}">
+    <article class="story">
+      <div class="story-header">
+      <span class="story-title">${storyData.title}</span>
+      <a href="/users/${storyData.creator_id}">
+        <span class="story-creator-handle">@creator-username</span>
+      </a>
+      </div>
+      <div class="story-content">
+      <i class="fa-solid fa-book"></i>
+      <p class="story-paragraph">${storyData.content}</p>
+      </div>
+    </article>
+  </a>`;
   return markup;
 };
 
