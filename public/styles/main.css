@@ -242,6 +242,17 @@ textarea:focus {
   flex-direction: row;
 }
 
+.cover-content {
+  width: 60%;
+  padding-right: 2em;
+}
+
+.cover-content img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+}
+
 .story-paragraph {
   font-family: "Quicksand", cursive;
   font-size: 26px;
