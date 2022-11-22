@@ -1,38 +1,36 @@
 // Client facing scripts here
 $(document).ready(function() {
-  const renderStories = function(stories) {
+  loadStory();
+});
 
-    for (const story of stories) {
-      const $story = addStory(story);
-      $('#story-container').prepend($story);
-    }
-  };
+// Renders each story to the page
+const renderStories = function(stories) {
+  for (const story of stories) {
+    const $story = addStory(story);
+    $('#story-container').prepend($story);
+  }
+};
 
-  const addStory = function(data) {
-    const storyInfo = data.story;
-    const markup = `
+// Populates story html template using the given story data. Returns the finished html
+const addStory = function(storyData) {
+  const markup = `
     <article class="story">
     <div class="story-header">
-      <span class="story-title">${storyInfo.title}</span>
-      <span class="story-creator-handle">@creator-username</span>
+    <span class="story-title">${storyData.title}</span>
+    <span class="story-creator-handle">@creator-username</span>
     </div>
     <div class="story-content">
       <i class="fa-solid fa-book"></i>
-      <p class="story-paragraph">${storyInfo.content}</p>
+      <p class="story-paragraph">${storyData.content}</p>
     </div>
-  </article>
-    `;
-    return markup;
-  };
+    </article>`;
+  return markup;
+};
 
-  const loadStory = function() {
-    $.get({
-      url:'/',
-    })
-      .then(function(storyData) {
-        renderStories(storyData);
-      });
-  };
-
-  loadStory();
-});
+// Fetches story data with an async request from the API
+const loadStory = function() {
+  $.get('/api/stories/')
+    .then(function(storyData) {
+      renderStories(storyData.stories);
+    });
+};

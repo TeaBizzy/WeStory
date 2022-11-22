@@ -17,10 +17,11 @@ const stories = require('../../db/queries/stories');
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
+// Returns a JSON object containing an array of story objects
 router.get('/', (req, res) => {
   stories.getStories()
-    .then(story => {
-      res.json({ story });
+    .then(stories => {
+      res.json({ stories });
     })
     .catch(err => {
       res
