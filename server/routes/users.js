@@ -27,7 +27,7 @@ router.get('/:id', (req, res) => {
     return res.redirect('/login');
   }
 
-  const templateVars = {id: sessionCookie}
+  const templateVars = {id: sessionCookie};
   res.render('../views/profile.ejs', templateVars);
 });
 

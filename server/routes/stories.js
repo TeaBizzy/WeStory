@@ -25,7 +25,7 @@ router.get("/", (req, res) => {
     return res.redirect("/login");
   }
 
-  const templateVars = {id: sessionCookie}
+  const templateVars = {id: sessionCookie};
   res.render('../views/index.ejs', templateVars);
 });
 
@@ -37,8 +37,9 @@ router.get("/:id", (req, res) => {
   if (!isLoggedIn) {
     return res.redirect("/login");
   }
+  const storyId = req.params.id;
 
-  const templateVars = {id: sessionCookie}
+  const templateVars = {id: sessionCookie, storyId}
   res.render('../views/story.ejs', templateVars);
 });
 

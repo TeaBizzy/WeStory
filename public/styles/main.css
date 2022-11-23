@@ -204,7 +204,7 @@ textarea:focus {
 }
 
 .story {
-  margin: 10px 48px 40px 48px;
+  margin: 10px 48px min(35px, 3.5vw) 48px;
   background-color: #EEEEEE;
   outline: solid #2196F3 2px;
   box-shadow: 5px 5px 4px gray;
@@ -214,15 +214,19 @@ textarea:focus {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-left: 10px;
+  padding-left: min(1.5vw, 10px);
   background-color: #2196F3;
   color: #FFFFFF;
 }
 
 .story-title {
   font-family: "Bebas Neue", cursive;
+<<<<<<< HEAD
   font-size: 30px;
   color: #EEEEEE;
+=======
+  font-size: min(30px, 3.5vw);
+>>>>>>> 805d5eaed8cbe3c3b14cffc199ee7e32821b4aa4
 }
 
 .story-title:hover {
@@ -244,10 +248,24 @@ textarea:focus {
   flex-direction: row;
 }
 
+.cover-content {
+  width: 60%;
+  padding-right: 2vw;
+}
+
+.cover-content img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  min-width: 155px;
+}
+
 .story-paragraph {
   font-family: "Quicksand", cursive;
-  font-size: 26px;
-  margin-top: 30px;
+  font-size: 2.5vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  padding-right: 1vw;
 }
 
 .separator {
@@ -298,5 +316,19 @@ footer {
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .story-content {
+    max-height: 155px;
+  }
+  .story-paragraph {
+    font-family: "Quicksand", cursive;
+    font-size: 26px;
+    margin-top: 30px;
+  }
+  .cover-content img {
+    max-height: 155px;
   }
 }
