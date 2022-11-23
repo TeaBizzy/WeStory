@@ -24,8 +24,8 @@ $(document).ready(function () {
   });
 });
 
-const registerEvents = function() {
-  const contributionTextArea = $('#contribution-text').parent();
+const registerEvents = function () {
+  const contributionTextArea = $("#contribution-text").parent();
 
   contributionTextArea.submit(submitContribution);
 };

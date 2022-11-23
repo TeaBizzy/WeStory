@@ -13,7 +13,7 @@
 
 const express = require('express');
 const router  = express.Router();
-
+const users = require('../../db/queries/users');
 
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
@@ -22,14 +22,16 @@ router.get('/:id', (req, res) => {
   // Get session cookie
   const sessionCookie = req.session.user_id;
   const isLoggedIn = sessionCookie ? true : false;
-
+  const userId = sessionCookie;
   if (!isLoggedIn) {
     return res.redirect('/login');
   }
-  const userId = req.params.id;
 
-  const templateVars = {id: sessionCookie, userId};
-  res.render('../views/profile.ejs', templateVars);
+  users.getAvatarById(sessionCookie)
+    .then(resolve => {
+      const templateVars = {id: sessionCookie, userId, avatarUrl: resolve.avatar_url};
+      res.render('../views/profile.ejs', templateVars);
+    });
 });
 
 

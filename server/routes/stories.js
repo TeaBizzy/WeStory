@@ -12,7 +12,7 @@
 
 const express = require("express");
 const router = express.Router();
-
+const users = require('../../db/queries/users');
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
@@ -25,8 +25,12 @@ router.get("/", (req, res) => {
     return res.redirect("/login");
   }
 
-  const templateVars = {id: sessionCookie};
-  res.render('../views/index.ejs', templateVars);
+  users.getAvatarById(sessionCookie)
+    .then(resolve => {
+      const templateVars = {id: sessionCookie, avatarUrl: resolve.avatar_url};
+      res.render('../views/index.ejs', templateVars);
+    });
+
 });
 
 router.get("/:id", (req, res) => {
@@ -37,10 +41,14 @@ router.get("/:id", (req, res) => {
   if (!isLoggedIn) {
     return res.redirect("/login");
   }
-  const storyId = req.params.id;
 
-  const templateVars = {id: sessionCookie, storyId}
-  res.render('../views/story.ejs', templateVars);
+  users.getAvatarById(sessionCookie)
+    .then(resolve => {
+      const storyId = req.params.id;
+      const templateVars = {id: sessionCookie, storyId, avatarUrl: resolve.avatar_url};
+      res.render("../views/story.ejs", templateVars);
+    });
+
 });
 
 // ___________________________________________________________________________ //
