@@ -21,8 +21,7 @@ const loadContributions = function () {
   );
 };
 
-const renderContributions = function (contributions) {
-  console.log(contributions);
+const renderContributions = function(contributions) {
   for (const contribution of contributions) {
     const newContribution = generateContribution(contribution);
     $(".contributions-container").prepend(newContribution);

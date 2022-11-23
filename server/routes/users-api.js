@@ -7,12 +7,26 @@
 
 const express = require('express');
 const router  = express.Router();
+const stories = require('../../db/queries/stories');
 // const userQueries = require('../../db/queries/users');
 
-router.get('/', (req, res) => {
-  // userQueries.getUsers()
-  //   .then(users => {
-  //     res.json({ users });
+// router.get('/', (req, res) => {
+//   // userQueries.getUsers()
+//   //   .then(users => {
+//   //     res.json({ users });
+//   //   })
+//   //   .catch(err => {
+//   //     res
+//   //       .status(500)
+//   //       .json({ error: err.message });
+//   //   });
+// });
+
+router.get('/:id', (req, res) => {
+  // const userId = req.params;
+  // stories.getStoryByUserId(userId)
+  //   .then(stories => {
+  //     res.json({ stories });
   //   })
   //   .catch(err => {
   //     res
