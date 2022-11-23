@@ -6,9 +6,11 @@ $(document).ready(function () {
     if ($(".new-story").first().is(":hidden")) {
       $(".new-story").slideDown(800);
       $(".welcome").css("margin-top", 30);
+      $(".profile-header").css("margin-top", 30);
     } else {
       $(".new-story").slideUp(800);
       $(".welcome").css("margin-top", 150);
+      $(".profile-header").css("margin-top", 150);
     }
   });
 

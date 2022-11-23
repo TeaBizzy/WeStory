@@ -1,5 +1,5 @@
 // Client facing scripts here
-$(document).ready(function() {
+$(document).ready(function () {
   loadStory();
 });
 
@@ -13,14 +13,14 @@ const renderStories = function (stories) {
 };
 
 // Populates story html template using the given story data. Returns the finished html
-const addStory = function(storyData) {
+const addStory = function (storyData) {
   console.log(storyData);
   const markup = `
-  <a href="/stories/${storyData.id}">
+  <a href="/stories/${storyData.id}" style="text-decoration: none">
     <article class="story">
       <div class="story-header">
       <span class="story-title">${storyData.title}</span>
-      <a href="/users/${storyData.creator_id}">
+      <a href="/users/${storyData.creator_id}" style="text-decoration: none">
         <span class="story-creator-handle">@${storyData.username}</span>
       </a>
       </div>
@@ -36,9 +36,9 @@ const addStory = function(storyData) {
 };
 
 // Fetches story data with an async request from the API
-const loadStory = function() {
-  const userId = $('body').attr('data-userid');
-  $.get(`/api/stories/user/${userId}/`).then(function(storyData) {
+const loadStory = function () {
+  const userId = $("body").attr("data-userid");
+  $.get(`/api/stories/user/${userId}/`).then(function (storyData) {
     renderStories(storyData.stories);
   });
 };

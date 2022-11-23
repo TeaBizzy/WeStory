@@ -25,8 +25,8 @@ router.get("/", (req, res) => {
     return res.redirect("/login");
   }
 
-  const templateVars = {id: sessionCookie};
-  res.render('../views/index.ejs', templateVars);
+  const templateVars = { id: sessionCookie };
+  res.render("../views/index.ejs", templateVars);
 });
 
 router.get("/:id", (req, res) => {
@@ -39,8 +39,8 @@ router.get("/:id", (req, res) => {
   }
   const storyId = req.params.id;
 
-  const templateVars = {id: sessionCookie, storyId}
-  res.render('../views/story.ejs', templateVars);
+  const templateVars = { id: sessionCookie, storyId };
+  res.render("../views/story.ejs", templateVars);
 });
 
 // ___________________________________________________________________________ //
