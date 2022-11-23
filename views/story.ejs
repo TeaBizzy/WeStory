@@ -31,7 +31,7 @@
       <i class="fa-solid fa-pencil"></i>
     </div>
     <div class="user">
-      <a href="/users/<%= id %>"><i class="fa-solid fa-user"></i></a>
+      <a href="/users/<%= id %>" style="text-decoration: none;"><i class="fa-solid fa-user"></i></a>
       <a href="/logout" style="text-decoration: none;"><span class="logout">Logout</span></a>
     </div>
   </nav>
@@ -48,12 +48,8 @@
         <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
       </div>
     </article>
-    <section class="toggle-contributions">
-      <span>View Contributions</span>
-    </section>
-    <section class="toggle-story">
-      <span>View Story</span>
-    </section>
+  <span class="toggle-contributions">View Contributions</span>
+  <span class="toggle-story">View Story</span>
   <section class="new-contribution">
     <form method="POST" action="">
       <textarea name="text" id="contribution-text" placeholder="Start writing to contribute!"></textarea>

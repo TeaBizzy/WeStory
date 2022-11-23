@@ -28,7 +28,6 @@ nav {
 
 .user {
   display: flex;
-  color: #E65100;
   font-family: "Bebas Neue", cursive;
   padding-right: 48px;
 }
@@ -46,6 +45,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #E65100;
   outline: solid #FFFFFF;
   border-radius: 30px;
   font-size: 30px;
@@ -53,7 +53,6 @@ nav {
   padding: 0.3em;
   width: 50px;
   height: 50px;
-  color: #E65100;
 }
 
 .fa-user:hover {
@@ -172,6 +171,10 @@ nav {
   height: 80px;
 }
 
+.toggle-contributions:hover {
+  cursor: pointer;
+}
+
 .toggle-story {
   display: flex;
   align-items: center;
@@ -181,6 +184,10 @@ nav {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
   height: 80px;
+}
+
+.toggle-story:hover {
+  cursor: pointer;
 }
 
 .new-contribution {
