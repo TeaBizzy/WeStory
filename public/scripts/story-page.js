@@ -1,5 +1,7 @@
+let story;
+let contributions;
+
 $(document).ready(function () {
-  registerEvents();
   initPage()
   $("footer").hide();
   $('.finish-button').hide();
@@ -32,10 +34,13 @@ const initPage = function() {
   Promise.all([loadStory(), loadContributions()])
   .then((values) => {
     // Declare variables
-    const story = values[0];
+    story = values[0];
+    contributions = values[1];
     const creator_id = story.creator_id;
     const user_id = Number($('body').attr('data-userid'));
     const isAuthor = creator_id === user_id;
+
+    console.log(contributions)
 
     // Hides approve buttons TODO: make these hidden by default
     $('.approve-button').hide();
@@ -44,6 +49,8 @@ const initPage = function() {
     if(isAuthor) {
       showAuthorControls();
     }
+
+    registerEvents();
   })
 };
 
@@ -56,6 +63,30 @@ const showAuthorControls = function() {
 //registers events
 const registerEvents = function () {
   const contributionTextArea = $("#contribution-text").parent();
+  const approveButtons = $('.approve-button');
 
+  approveButtons.on('click', (event) => {
+    event.preventDefault();
+    const storyId = Number($('body').attr('data-storyid'));
+    const selectedContribution = event.target.closest('.contribution')
+    const id = Number(selectedContribution.attributes[1].value);
+    let content;
+
+    for(const contribution of contributions) {
+      if(contribution.contribution_id === id) {
+        content = contribution.content;
+        break;
+      }
+    }
+
+    const fullContent = story.content + '\n' + content
+    const params = {storyId, fullContent};
+
+    $.ajax({
+      url: `/api/stories/${storyId}`,
+      method: 'PUT',
+      data: params
+    }).then(loadStory());
+  });
   contributionTextArea.submit(submitContribution);
 };
