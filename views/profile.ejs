@@ -23,60 +23,26 @@
 </head>
 
 <body data-userid="<%= userId %>">
-  <nav>
-    <a href="/stories" style="text-decoration: none;"><span class="logo">WeStory</span></a>
-    <div class="create-button">
-      <span class="create">Create</span>
-      <i class="fa-solid fa-pencil"></i>
+  <header>
+    <%- include('partials/_header') %>
+  </header>
+  <section class="new-story">
+    <div class="new-story-header">
+      <span>Create New Story!</span>
     </div>
-    <div class="user">
-      <a href="/users/<%= id %>" style="text-decoration: none;"><i class="fa-solid fa-user"></i></a>
-      <a href="/logout" style="text-decoration: none;"><span class="logout">Logout</span></a>
+    <div class="new-story-content">
+      <i class="fa-solid fa-book"></i>
+      <form method="POST" action="">
+        <textarea name="text" id="story-text"></textarea>
+      </form>
     </div>
-  </nav>
-  <span class="profile-header">Stories by @Username</span>
-  <section class="user-stories-container" id="user-stories-container">
-    <article class="story">
-      <div class="story-header">
-        <span class="story-title">Lord of the Things</span>
-        <span class="story-creator-handle">@creator-username</span>
-      </div>
-      <div class="story-content">
-        <i class="fa-solid fa-book"></i>
-        <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
-      </div>
-    </article>
-    <article class="story">
-      <div class="story-header">
-        <span class="story-title">Lord of the Things</span>
-        <span class="story-creator-handle">@creator-username</span>
-      </div>
-      <div class="story-content">
-        <i class="fa-solid fa-book"></i>
-        <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
-      </div>
-    </article>
-    <article class="story">
-      <div class="story-header">
-        <span class="story-title">Lord of the Things</span>
-        <span class="story-creator-handle">@creator-username</span>
-      </div>
-      <div class="story-content">
-        <i class="fa-solid fa-book"></i>
-        <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
-      </div>
-    </article>
-    <article class="story">
-      <div class="story-header">
-        <span class="story-title">Lord of the Things</span>
-        <span class="story-creator-handle">@creator-username</span>
-      </div>
-      <div class="story-content">
-        <i class="fa-solid fa-book"></i>
-        <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
-      </div>
-    </article>
+    <div class="form-icons">
+      <i class="fa-solid fa-check"></i>
+      <i class="fa-regular fa-trash-can"></i>
+    </div>
   </section>
+  <span class="profile-header">Stories by @Username</span>
+  <section class="user-stories-container" id="user-stories-container"></section>
   <div class="separator"></div>
   <footer>
     <i class="fa-solid fa-arrow-up"></i>

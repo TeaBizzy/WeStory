@@ -32,14 +32,15 @@ router.get('/', (req, res) => {
 
 // the parameters passed would be inputed by users and needs to be changed
 router.post('/', (req, res) => {
-  stories.addStory({user_id: 1, title: 'hello', content: 'world'})
+  const newStory = req.body;
+  stories.addStory(newStory)
     .then(story => {
-      res.json({ story });
+      res.json({story});
     })
     .catch(err => {
       res
-        .status(500)
-        .json({ error: err.message });
+      .status(500)
+      .json({ error: err.message });
     });
 });
 
