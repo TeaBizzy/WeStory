@@ -23,9 +23,9 @@ const stories = require('../../db/queries/stories');
 // });
 
 router.get('/:id', (req, res) => {
-  stories.getStoryByUserId({id: 1})
+  const userId = req.params;
+  stories.getStoryByUserId(userId)
     .then(stories => {
-      console.log(stories);
       res.json({ stories });
     })
     .catch(err => {
