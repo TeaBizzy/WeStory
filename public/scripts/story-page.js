@@ -26,26 +26,34 @@ $(document).ready(function () {
   });
 });
 
-
+// Loads all data, shows author controls.
 const initPage = function() {
+  // Load & render data from APIs
   Promise.all([loadStory(), loadContributions()])
   .then((values) => {
+    // Declare variables
     const story = values[0];
     const creator_id = story.creator_id;
     const user_id = Number($('body').attr('data-userid'));
     const isAuthor = creator_id === user_id;
+
+    // Hides approve buttons TODO: make these hidden by default
     $('.approve-button').hide();
+
+    // Display author controls
     if(isAuthor) {
       showAuthorControls();
     }
   })
 };
 
+// Shows author controls
 const showAuthorControls = function() {
   $('.finish-button').show();
   $('.approve-button').show();
 };
 
+//registers events
 const registerEvents = function () {
   const contributionTextArea = $("#contribution-text").parent();
 
