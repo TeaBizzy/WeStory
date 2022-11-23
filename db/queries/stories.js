@@ -1,5 +1,5 @@
 const db = require('../connection');
-const generateRandomCover = require('../../public/scripts/storyHelper');
+const { generateRandomCover } = require('../../public/scripts/storyHelper');
 
 const getStories = () => {
   return db.query(`
@@ -11,11 +11,15 @@ const getStories = () => {
     });
 };
 
+// TODO: Move generateRandomCover() to another file, and pass its result as an argument
 const addStory = (story) => {
   const storyInfo = [story.user_id, story.title, story.content, generateRandomCover()];
   return db.query(`
   INSERT INTO stories (creator_id, title, content, cover_url) VALUES ($1, $2, $3, $4) RETURNING *;
-  `, storyInfo);
+  `, storyInfo)
+  .then(data => {
+    return data.rows[0];
+  })
 };
 
 const getStoryById = (story) => {
