@@ -19,14 +19,41 @@ const router  = express.Router();
 // *-------------------------------- Routing --------------------------------* //
 
 router.post('/', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
   res.send('Insert a new upvote to the upvotes table');
 });
 
 router.delete('/:user_id', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
   res.send('Delete from the upvotes table by user_id');
 });
 
 router.delete('/:contribution_id', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
   res.send('Delete from the upvotes table by contribution_id');
 });
 
