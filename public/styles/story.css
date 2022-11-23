@@ -13,6 +13,7 @@ nav {
   height: 100px;
   width: 100%;
   position: fixed;
+  z-index: 2;
 }
 
 .logo {
@@ -172,6 +173,7 @@ nav {
   width: 100%;
   position: sticky;
   bottom: 0px;
+  z-index: 1;
 }
 
 .toggle-contributions:hover {
@@ -393,6 +395,7 @@ footer {
   bottom: 0;
   background-color: #FFA726;
   position: fixed;
+  z-index: 2;
 }
 
 .fa-arrow-up {
