@@ -24,14 +24,14 @@
 
 <body>
   <nav>
-    <a href="/stories"><span class="logo">WeStory</span></a>
+    <a href="/stories"><span class="logo" style="text-decoration: none">WeStory</span></a>
     <div class="contribute-button">
       <span class="contribute">contribute</span>
       <i class="fa-solid fa-pencil"></i>
     </div>
     <div class="user">
       <a href="/users/<%= id %>"><i class="fa-solid fa-user"></i></a>
-      <a href="/logout"><span class="logout">Logout</span></a>
+      <a href="/logout" style="text-decoration: none;"><span class="logout">Logout</span></a>
     </div>
   </nav>
   <section class="story-container">
@@ -62,25 +62,25 @@
       <i class="fa-regular fa-trash-can"></i>
     </div>
   </section>
-    <section class="contributions-container">
-      <article class="contribution">
-        <div class="contribution-header">
-            <i class="fa-solid fa-user fa-contribution"></i>
-          <span class="contribution-creator-handle">@creator-username</span>
-        </div>
-          <div class="contribution-content">
-            <div class="upvote-icons">
-              <i class="fa-solid fa-heart"></i>
-              <span class="upvote-count">0</span>
-            </div>
-            <p class="contribution-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
+  <section class="contributions-container">
+    <article class="contribution">
+      <div class="contribution-header">
+          <i class="fa-solid fa-user fa-contribution"></i>
+        <span class="contribution-creator-handle">@creator-username</span>
+      </div>
+        <div class="contribution-content">
+          <div class="upvote-icons">
+            <i class="fa-solid fa-heart"></i>
+            <span class="upvote-count">0</span>
           </div>
-          <section class="contribution-footer">
-            <div class="approve-button">
-              <span class="approve">Approve</span>
-              <i class="fa-solid fa-thumbs-up"></i>
-            </div>
-          </section>
+          <p class="contribution-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
+        </div>
+        <section class="contribution-footer">
+          <div class="approve-button">
+            <span class="approve">Approve</span>
+            <i class="fa-solid fa-thumbs-up"></i>
+          </div>
+        </section>
     </section>
     <footer>
       <i class="fa-solid fa-arrow-up"></i>
