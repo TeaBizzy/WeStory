@@ -6,7 +6,7 @@ const loadStory = function() {
     $.get(`/api/stories/${storyId}`)
     .then(data => {
       const story = data.story;
-      const splitStory = story.content.split('\\n')
+      const splitStory = story.content.split('\n')
       renderStory(splitStory);
       resolve(story)
     })
