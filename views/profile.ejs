@@ -14,17 +14,15 @@
 
   <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" />
   <link rel="stylesheet" href="/vendor/border-box.css" />
-  <link rel="stylesheet" href="/styles/main.css" />
+  <link rel="stylesheet" href="/styles/profile.css" />
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/events.js"></script>
   <script defer src="/scripts/app.js"></script>
   <script defer src="/scripts/composer.js"></script>
-  <script defer src="/scripts/story-creation.js"></script>
 </head>
 
-<body data-userid="<%= id %>">
+<body>
   <header>
     <%- include('partials/_header') %>
   </header>
@@ -34,21 +32,17 @@
     </div>
     <div class="new-story-content">
       <i class="fa-solid fa-book"></i>
-      <form>
+      <form method="POST" action="">
         <textarea name="text" id="story-text"></textarea>
-        <div class="form-icons">
-          <button type="submit"
-            <i class="fa-solid fa-check"></i>
-          </button>
-          <button type="reset"
-            <i class="fa-regular fa-trash-can"></i>
-          </button>
-        </div>
       </form>
     </div>
+    <div class="form-icons">
+      <i class="fa-solid fa-check"></i>
+      <i class="fa-regular fa-trash-can"></i>
+    </div>
   </section>
-  <span class="welcome">Welcome @Username</span>
-  <section class="story-container" id="story-container"></section>
+  <span class="profile-header">Stories by @Username</span>
+  <section class="user-stories-container"></section>
   <div class="separator"></div>
   <footer>
     <i class="fa-solid fa-arrow-up"></i>

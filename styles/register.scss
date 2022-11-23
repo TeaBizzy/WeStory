@@ -1,0 +1,116 @@
+body {
+  display: flex;
+  flex-direction: column;
+  background-color: #FFFFFF;
+  align-items: center;
+  justify-content: center;
+}
+
+nav {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #FFA726;
+  height: 100px;
+  width: 100%;
+}
+
+.logo {
+  padding-left: 48px;
+  font-family: "Lobster", cursive;
+  color: #FFFFFF;
+  font-size: 40px;
+}
+
+#login-form {
+  display: flex;
+  flex-direction: column;
+  height: 70px;
+  width: 350px;
+  margin-top: 25px;
+  font-family: "Quicksand", cursive;
+}
+
+input {
+  border: hidden;
+  resize: none;
+  background-color: #EEEEEE;
+  border-radius: 25px;
+  padding-left: 20px;
+  font-size: 20px;
+}
+
+input:focus {
+  outline: none;
+}
+
+.first-prompt {
+  font-family: "Quicksand", cursive;
+  font-size: 50px;
+  margin-top: 300px;
+}
+
+.westory {
+  font-family: "Lobster", cursive;
+}
+
+.second-prompt {
+  font-family: "Quicksand", cursive;
+  font-size: 25px;
+  margin-top: -10px;
+}
+
+.buttons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+}
+
+.login {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.login-prompt {
+  font-family: "Quicksand", cursive;
+  font-size: 15px;
+  margin-bottom: 5px;
+}
+
+.login-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2196F3;
+  font-family: "Bebas Neue", cursive;
+  color: #EEEEEE;
+  font-size: 25px;
+  width: 150px;
+  border-radius: 30px;
+}
+
+.register-button {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #2196F3;
+  font-family: "Bebas Neue", cursive;
+  color: #EEEEEE;
+  font-size: 25px;
+  width: 150px;
+  border-radius: 30px;
+}
+
+::placeholder {
+  font-size: 20px;
+}
+
+#user-email {
+  margin-bottom: 10px;
+}

@@ -28,7 +28,6 @@ nav {
 
 .user {
   display: flex;
-  color: #E65100;
   font-family: "Bebas Neue", cursive;
   padding-right: 48px;
 }
@@ -60,7 +59,7 @@ nav {
   cursor: pointer;
 }
 
-.create-button {
+.contribute-button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -88,58 +87,129 @@ nav {
     transform: translateY(0);
   }
 }
-.create-button:hover {
+.contribute-button:hover {
   cursor: pointer;
   animation-name: bounce-down;
   animation-timing-function: ease;
 }
 
-.create {
+.contribute {
   font-family: "Bebas Neue", cursive;
-  font-size: 30px;
+  font-size: 25px;
 }
 
 .fa-pencil {
   font-size: 40px;
 }
 
-.new-story {
-  margin: 155px 48px 0px 48px;
+.story-container {
+  display: flex;
+  flex-direction: column;
+}
+
+.story {
+  margin: 160px 48px 40px 48px;
+  background-color: #EEEEEE;
+  outline: solid #2196F3 2px;
+  box-shadow: 5px 5px 4px gray;
+  height: 100%;
+}
+
+.story-header {
+  display: flex;
+  flex-direction: column;
+}
+
+.story-heading {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  padding-left: 10px;
+  background-color: #2196F3;
+  color: #FFFFFF;
+}
+
+.story-title {
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+}
+
+.story-title:hover {
+  cursor: pointer;
+}
+
+.story-creator-handle {
+  font-family: "Quicksand", cursive;
+  margin: 10px 10px;
+}
+
+.story-creator-handle:hover {
+  cursor: pointer;
+}
+
+.story-content {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  margin: 10px 48px 0px 48px;
+}
+
+.story-paragraph {
+  font-family: "Quicksand", cursive;
+  font-size: 26px;
+  margin-top: 35px;
+}
+
+.toggle-contributions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFA726;
+  color: #E65100;
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  height: 80px;
+}
+
+.toggle-contributions:hover {
+  cursor: pointer;
+}
+
+.toggle-story {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #FFA726;
+  color: #E65100;
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  height: 80px;
+}
+
+.toggle-story:hover {
+  cursor: pointer;
+}
+
+.new-contribution {
+  margin: 40px 48px 0px 48px;
   background-color: #EEEEEE;
   outline: solid #2196F3 2px;
   height: 220px;
   box-shadow: 5px 5px 4px gray;
 }
 
-.new-story-header {
-  padding-left: 10px;
-  background-color: #2196F3;
-  font-family: "Bebas Neue", cursive;
-  color: #FFFFFF;
-  font-size: 30px;
-}
-
-.new-story-content {
-  display: flex;
-}
-
 form {
   width: 100%;
 }
 
-#story-text {
+#contribution-text {
   background-color: #EEEEEE;
   width: 100%;
-  height: 128px;
+  height: 180px;
   font-family: "Quicksand", cursive;
   font-size: 26px;
   border: hidden;
   resize: none;
-}
-
-.fa-book {
-  font-size: 100px;
-  margin: 30px 20px 10px 20px;
 }
 
 .form-icons {
@@ -191,72 +261,120 @@ textarea:focus {
   outline: none;
 }
 
-.welcome {
-  font-family: "Quicksand", cursive;
-  font-size: 35px;
-  margin: 150px 48px 0px 48px;
-  font-weight: bold;
-}
-
-.story-container {
+.contributions-container {
   display: flex;
   flex-direction: column;
 }
 
-.story {
-  margin: 10px 48px 40px 48px;
+.contribution {
+  margin: 40px 48px 40px 48px;
   background-color: #EEEEEE;
   outline: solid #2196F3 2px;
   box-shadow: 5px 5px 4px gray;
-}
-
-.story-header {
-  display: flex;
-  flex-direction: row;
-  justify-content: space-between;
-  padding-left: 10px;
-  background-color: #2196F3;
-  color: #FFFFFF;
-}
-
-.story-title {
-  font-family: "Bebas Neue", cursive;
-  font-size: 30px;
-  color: #EEEEEE;
-}
-
-.story-title:hover {
-  cursor: pointer;
-}
-
-.story-creator-handle {
-  font-family: "Quicksand", cursive;
-  margin: 8px 10px 0px 0px;
-  color: #EEEEEE;
-}
-
-.story-creator-handle:hover {
-  cursor: pointer;
-}
-
-.story-content {
-  display: flex;
-  flex-direction: row;
-}
-.cover {
   height: 100%;
-  width: 100%;
-  object-fit: cover;
 }
 
-.story-paragraph {
+.contribution-header {
+  display: flex;
+  flex-direction: row;
+  padding: 10px 0px 0px 10px;
+}
+
+.fa-contribution {
+  color: #FFFFFF;
+  background-color: #2196F3;
+  box-shadow: 0 6px 10px 0px gray;
+}
+
+.contribution-creator-handle {
+  font-family: "Quicksand", cursive;
+  margin: 10px 10px;
+  color: #FFA726;
+  font-size: 20px;
+}
+
+.contribution-creator-handle:hover {
+  cursor: pointer;
+}
+
+.contribution-content {
+  display: flex;
+  flex-direction: row;
+  height: 100%;
+  margin: 0px 48px 0px 48px;
+}
+
+.upvote-icons {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 20px 20px 0px -35px;
+}
+
+.fa-heart {
+  font-size: 40px;
+  color: #FFA726;
+}
+
+.fa-heart:hover {
+  cursor: pointer;
+}
+
+.upvote-count {
+  font-family: "Bebas Neue", cursive;
+  color: #FFA726;
+  font-size: 30px;
+}
+
+.contribution-paragraph {
   font-family: "Quicksand", cursive;
   font-size: 26px;
-  margin-top: 30px;
+  margin-top: 5px;
 }
 
-.separator {
-  margin: 10px 0px 130px 0px;
+.fa-check {
+  color: #E65100;
+  background-color: #FFA726;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  outline: solid #FFFFFF;
+  border-radius: 30px;
+  font-size: 30px;
+  margin-right: 20px;
+  width: 40px;
+  height: 40px;
+  box-shadow: 0 6px 10px 0px gray;
+}
+
+.approve {
+  font-family: "Bebas Neue", cursive;
+  font-size: 20px;
+}
+
+.contribution-footer {
+  display: flex;
+  justify-content: flex-end;
+  margin: 5px;
+}
+
+.approve-button {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  color: #E65100;
+  border-radius: 30px;
+  outline: solid #FFFFFF;
+  width: 70px;
+  height: 70px;
+  background-color: #FFA726;
+  box-shadow: 0 6px 10px 0px gray;
+  margin: -50px 20px 20px 0px;
+}
+
+.approve-button:hover {
+  cursor: pointer;
 }
 
 footer {
@@ -290,11 +408,11 @@ footer {
 
 .fa-arrow-up:hover {
   cursor: pointer;
-  animation-name: bounce;
+  animation-name: bounce-up;
   animation-timing-function: ease;
 }
 
-@keyframes bounce {
+@keyframes bounce-up {
   0% {
     transform: translateY(0);
   }
@@ -305,3 +423,5 @@ footer {
     transform: translateY(0);
   }
 }
+
+/*# sourceMappingURL=story.css.map */

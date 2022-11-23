@@ -191,14 +191,20 @@ textarea:focus {
   outline: none;
 }
 
-.welcome {
+
+.profile-header {
+  margin: 155px 0px 10px 48px;
   font-family: "Quicksand", cursive;
   font-size: 35px;
-  margin: 150px 48px 0px 48px;
   font-weight: bold;
 }
 
-.story-container {
+.fa-book {
+  font-size: 100px;
+  margin: 35px 20px 10px 20px;
+}
+
+.user-stories-container {
   display: flex;
   flex-direction: column;
 }
@@ -222,7 +228,6 @@ textarea:focus {
 .story-title {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
-  color: #EEEEEE;
 }
 
 .story-title:hover {
@@ -231,8 +236,7 @@ textarea:focus {
 
 .story-creator-handle {
   font-family: "Quicksand", cursive;
-  margin: 8px 10px 0px 0px;
-  color: #EEEEEE;
+  margin: 10px 10px;
 }
 
 .story-creator-handle:hover {
@@ -242,17 +246,13 @@ textarea:focus {
 .story-content {
   display: flex;
   flex-direction: row;
-}
-.cover {
   height: 100%;
-  width: 100%;
-  object-fit: cover;
 }
 
 .story-paragraph {
   font-family: "Quicksand", cursive;
   font-size: 26px;
-  margin-top: 30px;
+  margin-top: 35px;
 }
 
 .separator {
@@ -290,11 +290,11 @@ footer {
 
 .fa-arrow-up:hover {
   cursor: pointer;
-  animation-name: bounce;
+  animation-name: bounce-up;
   animation-timing-function: ease;
 }
 
-@keyframes bounce {
+@keyframes bounce-up {
   0% {
     transform: translateY(0);
   }
