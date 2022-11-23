@@ -35,7 +35,7 @@ const getAvatarById = (id) => {
   WHERE id = ${id}
   `)
     .then(data => {
-      return data.rows;
+      return data.rows[0];
     });
 };
 
