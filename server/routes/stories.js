@@ -12,7 +12,7 @@
 
 const express = require("express");
 const router = express.Router();
-
+const users = require('../../db/queries/users');
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
@@ -25,7 +25,9 @@ router.get("/", (req, res) => {
     return res.redirect("/login");
   }
 
-  const templateVars = {id: sessionCookie};
+  const avatarUrl = users.getAvatarById(sessionCookie);
+
+  const templateVars = {id: sessionCookie, avatarUrl};
   res.render('../views/index.ejs', templateVars);
 });
 
@@ -39,7 +41,7 @@ router.get("/:id", (req, res) => {
   }
   const storyId = req.params.id;
 
-  const templateVars = {id: sessionCookie, storyId}
+  const templateVars = {id: sessionCookie, storyId};
   res.render('../views/story.ejs', templateVars);
 });
 

@@ -12,6 +12,7 @@ const generateRandomAvatar = function() {
   return userIdAvatars;
 };
 
+
 module.exports = { generateRandomCover, generateRandomAvatar };
 
 

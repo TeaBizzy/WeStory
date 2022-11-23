@@ -32,6 +32,12 @@ nav {
   padding-right: 48px;
 }
 
+.user img {
+  width: 3em;
+  border-radius: 50%;
+  border: 3px solid #E65100;
+}
+
 .logout {
   font-size: 40px;
   color: #E65100;
