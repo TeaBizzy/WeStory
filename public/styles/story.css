@@ -59,7 +59,7 @@ nav {
   cursor: pointer;
 }
 
-.contribute-button {
+.finish-button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -87,18 +87,18 @@ nav {
     transform: translateY(0);
   }
 }
-.contribute-button:hover {
+.finish-button:hover {
   cursor: pointer;
   animation-name: bounce-down;
   animation-timing-function: ease;
 }
 
-.contribute {
+.finish {
   font-family: "Bebas Neue", cursive;
   font-size: 25px;
 }
 
-.fa-pencil {
+.fa-gem {
   font-size: 40px;
 }
 
@@ -169,6 +169,9 @@ nav {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
   height: 80px;
+  width: 100%;
+  position: sticky;
+  bottom: 0px;
 }
 
 .toggle-contributions:hover {
@@ -375,6 +378,10 @@ textarea:focus {
 
 .approve-button:hover {
   cursor: pointer;
+}
+
+.separator {
+  margin: 10px 0px 130px 0px;
 }
 
 footer {
