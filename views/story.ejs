@@ -18,12 +18,12 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
   <script defer src="/scripts/contribution-loader.js"></script>
+  <script defer src="/scripts/contribution-creation.js"></script>
   <script defer src="/scripts/story-page.js"></script>
 </head>
 
-<body data-storyid="<%= storyId %>">
+<body data-storyid="<%= storyId %>" data-userid="<%= id %>">
   <nav>
     <a href="/stories" style="text-decoration: none"><span class="logo">WeStory</span></a>
     <div class="finish-button">
@@ -56,13 +56,17 @@
   </section>
   <span class="toggle-contributions">View Contributions</span>
   <section class="new-contribution">
-    <form method="POST" action="">
+    <form>
       <textarea name="text" id="contribution-text" placeholder="Start writing to contribute!"></textarea>
+      <div class="form-icons">
+        <button type="submit"
+          <i class="fa-solid fa-check"></i>
+        </button>
+        <button type="reset"
+          <i class="fa-regular fa-trash-can"></i>
+        </button>
+      </div>
     </form>
-    <div class="form-icons">
-      <i class="fa-solid fa-check"></i>
-      <i class="fa-regular fa-trash-can"></i>
-    </div>
   </section>
   <section class="contributions-container"></section>
   <div class="separator"></div>

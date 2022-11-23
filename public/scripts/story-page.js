@@ -1,4 +1,5 @@
 $(document).ready(function () {
+  registerEvents();
   $("footer").hide();
 
   $(window).on("scroll", function () {
@@ -22,3 +23,9 @@ $(document).ready(function () {
     $("html, body").animate({ scrollTop: $(".story").height() }, 800);
   });
 });
+
+const registerEvents = function () {
+  const contributionTextArea = $("#contribution-text").parent();
+
+  contributionTextArea.submit(submitContribution);
+};

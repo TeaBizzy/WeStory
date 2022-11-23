@@ -41,8 +41,8 @@ router.get("/:id", (req, res) => {
   }
   const storyId = req.params.id;
 
-  const templateVars = {id: sessionCookie, storyId};
-  res.render('../views/story.ejs', templateVars);
+  const templateVars = { id: sessionCookie, storyId };
+  res.render("../views/story.ejs", templateVars);
 });
 
 // ___________________________________________________________________________ //

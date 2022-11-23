@@ -22,9 +22,10 @@ const loadContributions = function () {
 };
 
 const renderContributions = function(contributions) {
+  const container = $(".contributions-container");
   for (const contribution of contributions) {
     const newContribution = generateContribution(contribution);
-    $(".contributions-container").prepend(newContribution);
+    container.prepend(newContribution);
   }
 };
 

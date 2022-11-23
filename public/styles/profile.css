@@ -246,6 +246,7 @@ textarea:focus {
 .story-title {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
+  color: #FFFFFF;
 }
 
 .story-title:hover {
@@ -255,6 +256,7 @@ textarea:focus {
 .story-creator-handle {
   font-family: "Quicksand", cursive;
   margin: 10px 10px;
+  color: #FFFFFF;
 }
 
 .story-creator-handle:hover {
