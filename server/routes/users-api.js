@@ -23,16 +23,7 @@ const stories = require('../../db/queries/stories');
 // });
 
 router.get('/:id', (req, res) => {
-  const userId = req.params;
-  stories.getStoryByUserId(userId)
-    .then(stories => {
-      res.json({ stories });
-    })
-    .catch(err => {
-      res
-        .status(500)
-        .json({ error: err.message });
-    });
+
 });
 
 router.post('/', (req, res) => {

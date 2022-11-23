@@ -62,9 +62,10 @@ router.put('/:id', (req, res) => {
 });
 
 router.get('/user/:id', (req, res) => {
-  stories.getStoryByUserId({id: 1})
-    .then(story => {
-      res.json({ story });
+  const userId = req.params;
+  stories.getStoryByUserId(userId)
+    .then(stories => {
+      res.json({ stories });
     })
     .catch(err => {
       res
