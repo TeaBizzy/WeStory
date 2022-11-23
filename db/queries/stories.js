@@ -45,4 +45,16 @@ const getStoryByUserId = (user) => {
     });
 };
 
-module.exports = { getStories, addStory, getStoryById, getStoryByUserId };
+const updateStory = function(storyId, content) {
+  const queryParams = [storyId, content]
+  return db.query(`
+    UPDATE stories
+    SET content = $2
+    WHERE id = $1
+    RETURNING *;
+  `, queryParams).then(data => {
+    return data.rows[0];
+  })
+};
+
+module.exports = { getStories, addStory, getStoryById, getStoryByUserId, updateStory };
