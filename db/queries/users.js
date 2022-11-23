@@ -1,4 +1,5 @@
 const db = require('../connection');
+const generateRandomAvatar = require('../../public/scripts/storyHelper');
 
 const getUser = (user) => {
   return db.query(`
@@ -22,10 +23,20 @@ const getUserById = (user) => {
 };
 
 const addUser = (user) => {
-  const userInfo = [user.username, user.password];
+  const userInfo = [user.username, user.password, generateRandomAvatar()];
   return db.query(`
-  INSERT INTO users (username, password) VALUES ($1, $2) RETURNING *;
+  INSERT INTO users (username, password, avatar_url) VALUES ($1, $2, $3) RETURNING *;
   `, userInfo);
 };
 
-module.exports = { getUser, getUserById, addUser };
+const getAvatarById = (id) => {
+  return db.query(`
+  SELECT avatar_url FROM users
+  WHERE id = ${id}
+  `)
+    .then(data => {
+      return data.rows[0];
+    });
+};
+
+module.exports = { getUser, getUserById, addUser, getAvatarById };

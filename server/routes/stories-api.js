@@ -70,6 +70,7 @@ router.get('/:id', (req, res) => {
   // Get session cookie
   const sessionCookie = req.session.user_id;
   const isLoggedIn = sessionCookie ? true : false;
+  const storyId = req.params.id;
 
   // Validates requester is authorized
   if (!isLoggedIn) {
@@ -77,7 +78,7 @@ router.get('/:id', (req, res) => {
     return res.status(401).send();
   }
 
-  stories.getStoryById({id: 5})
+  stories.getStoryById(storyId)
     .then(story => {
       res.json({ story });
     })
