@@ -4,7 +4,7 @@ CREATE TABLE stories (
   creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
 
   title VARCHAR(255) NOT NULL,
-  content VARCHAR(160) NOT NULL,
+  content TEXT NOT NULL,
   cover_url VARCHAR(255) NOT NULL,
   is_completed BOOLEAN DEFAULT FALSE
 );

@@ -23,13 +23,13 @@ const addStory = (story) => {
   })
 };
 
-const getStoryById = (story) => {
+const getStoryById = (id) => {
   return db.query(`
   SELECT * FROM stories
-  WHERE id = ${story.id};
+  WHERE id = ${id};
   `)
     .then(data => {
-      return data.rows;
+      return data.rows[0];
     });
 };
 
