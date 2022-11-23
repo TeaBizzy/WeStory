@@ -20,6 +20,16 @@ const queries = require('../../db/queries/contributions');
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/:story_id', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
+
   const storyId = req.params.story_id;
 
   queries.getContributions(storyId)
@@ -34,15 +44,42 @@ router.get('/:story_id', (req, res) => {
 });
 
 router.post('/', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
   res.send('Insert a new contribution into the DB & display it');
 });
 
 
 router.put('/:id', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
   res.send(`Modify contribution: ${req.params.id} & display it`);
 });
 
 router.delete('/:id', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
   res.send(`Delete contribution: ${req.params.id} & remove it from document`);
 });
 

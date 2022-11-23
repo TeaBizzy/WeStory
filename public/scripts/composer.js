@@ -16,7 +16,7 @@ $(document).ready(function () {
   $("footer").hide();
 
   $(window).on("scroll", function () {
-    if ($(this).scrollTop() > 100) {
+    if ($(window).scrollTop() > 100) {
       $("footer").fadeIn();
     } else {
       $("footer").fadeOut();
