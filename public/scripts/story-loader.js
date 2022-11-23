@@ -1,15 +1,18 @@
-$(document).ready(() => {
-  loadStory()
-});
-
 const loadStory = function() {
+
   const storyId = $('body').attr('data-storyid');
-  $.get(`/api/stories/${storyId}`)
-  .then(data => {
-    const story = data.story;
-    const splitStory = story.content.split('\\n')
-    renderStory(splitStory);
+
+  const promise = new Promise((resolve) => {
+    $.get(`/api/stories/${storyId}`)
+    .then(data => {
+      const story = data.story;
+      const splitStory = story.content.split('\n')
+      renderStory(splitStory);
+      resolve(story)
+    })
   });
+
+  return promise;
 };
 
 const renderStory = function(paragraphs) {
