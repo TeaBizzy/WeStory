@@ -38,7 +38,7 @@ const addStory = function(storyData) {
 // Fetches story data with an async request from the API
 const loadStory = function() {
   const userId = $('body').attr('data-userid');
-  $.get(`/api/users/${userId}/`).then(function(storyData) {
+  $.get(`/api/stories/user/${userId}/`).then(function(storyData) {
     renderStories(storyData.stories);
   });
 };
