@@ -5,6 +5,7 @@ $(document).ready(function () {
 
 // Renders each story to the page
 const renderStories = function (stories) {
+  console.log(stories);
   for (const story of stories) {
     const $story = addStory(story);
     $("#story-container").prepend($story);
