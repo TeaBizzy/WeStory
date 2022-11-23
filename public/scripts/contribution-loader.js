@@ -10,16 +10,22 @@
 // *----------------------------- Functions -----------------------------* //
 
 $(document).ready(() => {
-  loadContributions();
+  // loadContributions();
 });
 
 // Fetches contributions from database using AJAX
 const loadContributions = function () {
+
   const storyId = $("body").attr("data-storyid");
-  $.get(`/api/contributions/${storyId}`).then((data) =>
-    renderContributions(data.contributions)
-  );
-};
+  const promise = new Promise((resolve) => {
+    $.get(`/api/contributions/${storyId}`).then((data) => {
+      renderContributions(data.contributions)
+      resolve()
+    })
+  });
+
+  return promise;
+}
 
 const renderContributions = function(contributions) {
   const container = $(".contributions-container");
