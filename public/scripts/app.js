@@ -7,7 +7,7 @@ $(document).ready(function () {
 const renderStories = function (stories) {
   for (const story of stories) {
     const $story = addStory(story);
-    $("#user-stories-container").prepend($story);
+    $("#story-container").prepend($story);
   }
 };
 
@@ -35,7 +35,7 @@ const addStory = function (storyData) {
 
 // Fetches story data with an async request from the API
 const loadStory = function () {
-  $.get("/api/users/1").then(function (storyData) {
+  $.get("/api/stories").then(function (storyData) {
     renderStories(storyData.stories);
   });
 };
