@@ -21,7 +21,7 @@ const loadContributions = function () {
   );
 };
 
-const renderContributions = function(contributions) {
+const renderContributions = function (contributions) {
   const container = $(".contributions-container");
   for (const contribution of contributions) {
     const newContribution = generateContribution(contribution);
@@ -47,7 +47,7 @@ const generateContribution = function (contribution) {
       <p class="contribution-paragraph">${contribution.content}</p>
     </div>
     <section class="contribution-footer">
-      <div class="approve-button">
+      <div class="approve-button" style="display: none">
         <span class="approve">Approve</span>
         <i class="fa-solid fa-thumbs-up"></i>
       </div>

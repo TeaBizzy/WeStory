@@ -1,6 +1,7 @@
 $(document).ready(function () {
   registerEvents();
   $("footer").hide();
+  $(".finish-button").hide();
 
   $(window).on("scroll", function () {
     let togglePosition = $(".toggle-contributions").offset().top;
