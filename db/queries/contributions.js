@@ -5,9 +5,10 @@ const getContributions = (storyId) => {
   SELECT DISTINCT contributions.id as contribution_id, contributions.story_id, owner_id, users.username as owner_username, count(upvotes.*) as upvotes, contributions.content
   FROM contributions
   JOIN users ON users.id = owner_id
-  JOIN upvotes ON upvotes.contribution_id = contributions.id
+  LEFT JOIN upvotes ON upvotes.contribution_id = contributions.id
   WHERE story_id = $1
-  GROUP BY contributions.id, users.id;
+  GROUP BY contributions.id, users.id
+  ORDER BY contribution_id;
   `, [storyId])
     .then(data => {
       return data.rows;
@@ -15,11 +16,15 @@ const getContributions = (storyId) => {
 };
 
 const addContribution = (contribution) => {
-  const storyInfo = [contribution.user_id, contribution.story_id, contribution.content];
+  const contributionInfo = [contribution.user_id, contribution.story_id, contribution.content];
   return db.query(`
   INSERT INTO contributions (owner_id, story_id, content)
-  VALUES ($1, $2, $3);
-  `, storyInfo);
+  VALUES ($1, $2, $3)
+  RETURNING *;
+  `, contributionInfo)
+  .then(data => {
+    return data.rows[0];
+  });
 };
 
 const getContributionById = (contribution) => {

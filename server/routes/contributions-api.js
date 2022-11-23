@@ -53,7 +53,18 @@ router.post('/', (req, res) => {
     err = new Error('Access Denied')
     return res.status(401).send();
   }
-  res.send('Insert a new contribution into the DB & display it');
+
+  const newContribution = req.body;
+
+  queries.addContribution(newContribution)
+    .then(contribution => {
+      res.json({contribution});
+    })
+    .catch(err => {
+      res
+      .status(500)
+      .json({ error: err.message });
+    });
 });
 
 
