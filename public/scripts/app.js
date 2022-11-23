@@ -1,11 +1,11 @@
 // Client facing scripts here
-$(document).ready(function() {
+$(document).ready(function () {
   loadStory();
 });
 
 // Renders each story to the page
 const renderStories = function (stories) {
-  console.log(stories)
+  console.log(stories);
   for (const story of stories) {
     const $story = addStory(story);
     $("#story-container").prepend($story);
@@ -20,13 +20,8 @@ const addStory = function (storyData) {
     <article class="story">
       <div class="story-header">
       <span class="story-title">${storyData.title}</span>
-<<<<<<< HEAD
       <a href="/users/${storyData.creator_id}" style="text-decoration: none">
-        <span class="story-creator-handle">@creator-username</span>
-=======
-      <a href="/users/${storyData.creator_id}">
         <span class="story-creator-handle">@${storyData.username}</span>
->>>>>>> 805d5eaed8cbe3c3b14cffc199ee7e32821b4aa4
       </a>
       </div>
       <div class="story-content">

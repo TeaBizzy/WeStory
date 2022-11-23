@@ -6,36 +6,36 @@
   and inserting them into the dom.
 */
 
-
 // _______________________________________________________________________ //
 // *----------------------------- Functions -----------------------------* //
 
-$(document).ready(() =>{
+$(document).ready(() => {
   loadContributions();
-})
+});
 
 // Fetches contributions from database using AJAX
-const loadContributions = function() {
-  const storyId = $('body').attr('data-storyid')
-  $.get(`/api/contributions/${storyId}`)
-    .then((data) => renderContributions(data.contributions))
+const loadContributions = function () {
+  const storyId = $("body").attr("data-storyid");
+  $.get(`/api/contributions/${storyId}`).then((data) =>
+    renderContributions(data.contributions)
+  );
 };
 
-const renderContributions = function(contributions) {
-  console.log(contributions)
+const renderContributions = function (contributions) {
+  console.log(contributions);
   for (const contribution of contributions) {
     const newContribution = generateContribution(contribution);
-    $('.contributions-container').prepend(newContribution);
+    $(".contributions-container").prepend(newContribution);
   }
 };
 
 // Populates contribution html template using the given data. Returns the finished html
-const generateContribution = function(contribution) {
+const generateContribution = function (contribution) {
   const markup = `
   <article class="contribution">
     <div class="contribution-header">
       <i class="fa-solid fa-user fa-contribution"></i>
-      <a href="/users/${contribution.owner_id}">
+      <a href="/users/${contribution.owner_id}" style="text-decoration: none">
         <span class="contribution-creator-handle">@${contribution.owner_username}</span>
       </a>
     </div>
@@ -55,4 +55,3 @@ const generateContribution = function(contribution) {
   </article>`;
   return markup;
 };
-

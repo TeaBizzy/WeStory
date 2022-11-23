@@ -221,12 +221,8 @@ textarea:focus {
 
 .story-title {
   font-family: "Bebas Neue", cursive;
-<<<<<<< HEAD
   font-size: 30px;
   color: #EEEEEE;
-=======
-  font-size: min(30px, 3.5vw);
->>>>>>> 805d5eaed8cbe3c3b14cffc199ee7e32821b4aa4
 }
 
 .story-title:hover {
