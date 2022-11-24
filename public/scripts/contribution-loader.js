@@ -16,9 +16,21 @@ $(document).ready(() => {
 // Fetches contributions from database using AJAX
 const loadContributions = function () {
   const storyId = $("body").attr("data-storyid");
+  const userId = $("body").attr("data-userid");
+
   $.get(`/api/contributions/${storyId}`).then((data) =>
     renderContributions(data.contributions)
-  );
+  ).then(() => {
+    $(`.upvote`).click(function(event) {
+      const contributionId = event.target.id;
+      event.preventDefault();
+      $.post({
+        url: '/api/upvotes',
+        data: {user_id: userId, contribution_id: contributionId},
+      });
+
+    });
+  });
 };
 
 const renderContributions = function(contributions) {
@@ -32,7 +44,7 @@ const renderContributions = function(contributions) {
 // Populates contribution html template using the given data. Returns the finished html
 const generateContribution = function (contribution) {
   const markup = `
-  <article class="contribution">
+  <article class="contribution" data-contributionId="<%= ${contribution.contribution_id} %>">
     <div class="contribution-header">
       <i class="fa-solid fa-user fa-contribution"></i>
       <a href="/users/${contribution.owner_id}" style="text-decoration: none">
@@ -41,7 +53,7 @@ const generateContribution = function (contribution) {
     </div>
     <div class="contribution-content">
       <div class="upvote-icons">
-        <i class="fa-solid fa-heart"></i>
+        <i class="fa-solid fa-heart upvote" id="${contribution.contribution_id}"></i>
         <span class="upvote-count">${contribution.upvotes}</span>
       </div>
       <p class="contribution-paragraph">${contribution.content}</p>

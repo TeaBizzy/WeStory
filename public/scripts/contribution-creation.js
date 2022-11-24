@@ -48,4 +48,5 @@ const submitContribution = function(event) {
       data.contribution.upvotes = 0;
       renderContributions([data.contribution])
     });
+
 };
