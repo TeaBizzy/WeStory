@@ -10,16 +10,22 @@
 // *----------------------------- Functions -----------------------------* //
 
 $(document).ready(() => {
-  loadContributions();
+  // loadContributions();
 });
 
 // Fetches contributions from database using AJAX
 const loadContributions = function () {
+
   const storyId = $("body").attr("data-storyid");
-  $.get(`/api/contributions/${storyId}`).then((data) =>
-    renderContributions(data.contributions)
-  );
-};
+  const promise = new Promise((resolve) => {
+    $.get(`/api/contributions/${storyId}`).then((data) => {
+      renderContributions(data.contributions)
+      resolve(data.contributions)
+    })
+  });
+
+  return promise;
+}
 
 const renderContributions = function (contributions) {
   const container = $(".contributions-container");
@@ -32,7 +38,7 @@ const renderContributions = function (contributions) {
 // Populates contribution html template using the given data. Returns the finished html
 const generateContribution = function (contribution) {
   const markup = `
-  <article class="contribution">
+  <article class="contribution" data-contributionid="${contribution.contribution_id}">
     <div class="contribution-header">
       <i class="fa-solid fa-user fa-contribution"></i>
       <a href="/users/${contribution.owner_id}" style="text-decoration: none">

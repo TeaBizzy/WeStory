@@ -100,7 +100,17 @@ router.put('/:id', (req, res) => {
     return res.status(401).send();
   }
 
-  res.send(`Modify story: ${req.params.id} & display it`);
+  const body = req.body;
+
+  stories.updateStory(body.storyId, body.fullContent, body.completed)
+    .then(story => {
+      res.json({ story });
+    })
+    .catch(err => {
+      res
+        .status(500)
+        .json({ error: err.message });
+    });
 });
 
 router.get('/user/:id', (req, res) => {
