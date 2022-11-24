@@ -232,6 +232,8 @@ textarea:focus {
   background-color: #EEEEEE;
   outline: solid #2196F3 2px;
   box-shadow: 5px 5px 4px gray;
+  max-height: 165px;
+  overflow: hidden;
 }
 
 .story-header {
