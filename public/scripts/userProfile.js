@@ -47,7 +47,7 @@ const addStory = function (storyData, lastParagraph) {
 
 // Fetches story data with an async request from the API
 const loadStory = function () {
-  const userId = $("body").attr("data-userid");
+  const userId = $("body").attr("data-profileid");
   $.get(`/api/stories/user/${userId}/`).then(function (storyData) {
     renderStories(storyData.stories);
   });
