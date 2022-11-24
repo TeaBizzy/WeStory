@@ -10,6 +10,7 @@ $(document).ready(function () {
       $(".new-story").slideDown(800);
       $(".welcome").css("margin-top", 30);
       $(".profile-header").css("margin-top", 30);
+      $('#story-text').focus();
     } else {
       $(".error-empty-story").hide();
       $(".error-exceed-max-chars").hide();
