@@ -301,6 +301,28 @@ textarea:focus {
   padding-right: 1vw;
 }
 
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.fa-circle-check {
+  color: #2196F3;
+  font-size: 40px;
+  border-radius: 30px;
+  outline: solid #FFFFFF;
+}
+
+.status-message {
+  font-family: 'Quicksand', cursive;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
 .separator {
   margin: 10px 0px 130px 0px;
 }
