@@ -6,7 +6,10 @@ $(document).ready(function () {
 // Renders each story to the page
 const renderStories = function (stories) {
   for (const story of stories) {
-    const $story = addStory(story);
+    const paragraphs = story.content.split('\n');
+    const lastParagraph = paragraphs[paragraphs.length - 1];
+    const $story = addStory(story, lastParagraph);
+
     $("#user-stories-container").prepend($story)
 
     if(!story.is_completed) {
@@ -17,7 +20,7 @@ const renderStories = function (stories) {
 };
 
 // Populates story html template using the given story data. Returns the finished html
-const addStory = function (storyData) {
+const addStory = function (storyData, lastParagraph) {
   const markup = $(`
   <a href="/stories/${storyData.id}" style="text-decoration: none">
     <article class="story">
@@ -31,7 +34,7 @@ const addStory = function (storyData) {
         <div class="cover-content">
           <img src="${storyData.cover_url}">
         </div>
-        <p class="story-paragraph">${storyData.content}</p>
+        <p class="story-paragraph">${lastParagraph}</p>
         <div class="status">
           <i class="fa-solid fa-circle-check"></i>
           <span class="status-message">COMPLETED</span>
