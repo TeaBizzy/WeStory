@@ -45,11 +45,11 @@ const getStoryByUserId = (user) => {
     });
 };
 
-const updateStory = function(storyId, content) {
-  const queryParams = [storyId, content]
+const updateStory = function(storyId, content, completed) {
+  const queryParams = [storyId, content, completed]
   return db.query(`
     UPDATE stories
-    SET content = $2
+    SET content = $2, is_completed = $3
     WHERE id = $1
     RETURNING *;
   `, queryParams).then(data => {
