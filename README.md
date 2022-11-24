@@ -118,9 +118,9 @@
 <!-- CONTACT -->
 ## Contact
 
-Kelvin Huang - https://github.com/kelvinhuang98
-Ruoning Jin - https://github.com/RuoningJin
-Stefan Talbot - https://github.com/TeaBizzy
+Kelvin Huang - https://github.com/kelvinhuang98<br>
+Ruoning Jin - https://github.com/RuoningJin<br>
+Stefan Talbot - https://github.com/TeaBizzy<br>
 
 Project Link: [https://github.com/TeaBizzy/WeStory](https://github.com/TeaBizzy/WeStory)
 
