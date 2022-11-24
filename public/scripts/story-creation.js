@@ -35,8 +35,8 @@ const submitStory = function (event) {
     $(".new-story").css("margin-top", 0);
     return;
   } else {
-    $(".error-empty-story").slideUp("slow");
     $(".error-exceed-max-chars").slideUp("slow");
+    $(".error-empty-story").slideUp("slow");
   }
 
   // Build the params object

@@ -2,6 +2,7 @@ $(document).ready(function () {
   // Click nav bar button to hide/show new story form
   $(".new-story").hide();
   $(".error-empty-story").hide();
+  $(".error-empty-contribution").hide();
   $(".error-exceed-max-chars").hide();
 
   $(".create-button").on("click", () => {

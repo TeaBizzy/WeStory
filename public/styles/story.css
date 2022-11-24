@@ -186,19 +186,32 @@ nav {
   cursor: pointer;
 }
 
-.toggle-story {
+.error-exceed-max-chars {
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: #FFA726;
-  color: #E65100;
-  font-family: "Bebas Neue", cursive;
-  font-size: 30px;
-  height: 80px;
+  align-items: center;
+  color: red;
+  font-family: "Quicksand", cursive;
+  font-weight: bold;
+  border: 3px solid red;
+  height: 50px;
+  margin: 10px 48px 0px 48px;
 }
 
-.toggle-story:hover {
-  cursor: pointer;
+.error-empty-contribution {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-family: "Quicksand", cursive;
+  font-weight: bold;
+  border: 3px solid red;
+  height: 50px;
+  margin: 10px 48px 0px 48px;
+}
+
+.error-message {
+  margin: 0px 30px 0px 30px;
 }
 
 .new-contribution {
