@@ -23,6 +23,7 @@ const loadContributions = function () {
       .then((data) => {
         renderContributions(data.contributions);
         resolve(data.contributions);
+        showAuthorControls();
       })
       .then(() => {
         $(`.upvote`).click(function (event) {
