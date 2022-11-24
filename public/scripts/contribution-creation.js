@@ -47,5 +47,6 @@ const submitContribution = function(event) {
       storyForm.trigger("reset");
       data.contribution.upvotes = 0;
       renderContributions([data.contribution])
+      showAuthorControls();
     });
 };
