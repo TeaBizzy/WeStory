@@ -102,7 +102,7 @@ router.put('/:id', (req, res) => {
 
   const body = req.body;
 
-  stories.updateStory(body.storyId, body.fullContent)
+  stories.updateStory(body.storyId, body.fullContent, body.completed)
     .then(story => {
       res.json({ story });
     })
