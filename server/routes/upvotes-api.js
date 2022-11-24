@@ -30,17 +30,32 @@ router.post('/', (req, res) => {
   }
   console.log(req.body);
   const upvoteInfo = {user_id: sessionCookie, contribution_id: req.body.contribution_id};
-  queries.addUpvote(upvoteInfo)
-    .then((contributions) =>
-      res.json({contributions})
-    )
-    .catch(err => {
-      res
-        .status(500)
-        .json({error: err.message});
+  queries.getUpvoteByUserId(upvoteInfo)
+    .then((data) => {
+      console.log(data);
+      if (!data[0]) {
+        queries.addUpvote(upvoteInfo)
+          .then((upvote) =>
+            res.json({upvote})
+          )
+          .catch(err => {
+            res
+              .status(500)
+              .json({error: err.message});
+          });
+      }
+      if (data[0]) {
+        queries.removeUpvote(upvoteInfo)
+          .then((upvote) =>
+            res.json({upvote})
+          )
+          .catch(err => {
+            res
+              .status(500)
+              .json({error: err.message});
+          });
+      }
     });
-
-
 });
 
 router.delete('/:user_id', (req, res) => {

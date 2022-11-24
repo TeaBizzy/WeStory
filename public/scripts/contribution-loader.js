@@ -27,9 +27,12 @@ const loadContributions = function () {
       $.post({
         url: '/api/upvotes',
         data: {user_id: userId, contribution_id: contributionId},
-      });
-
+      })
+        .then(()=> {
+          location.reload();
+        });
     });
+    $('.upvote').trigger('reset');
   });
 };
 
