@@ -47,22 +47,44 @@ const initPage = function() {
     // Display author controls
     showAuthorControls();
 
+    if(story.is_completed) {
+      completeStory();
+    }
+
     registerEvents();
   })
 };
 
 // Shows author controls
 const showAuthorControls = function() {
-  if(isAuthor) {
-    $('.finish-button').show();
-    $('.approve-button').show();
+  if(!isAuthor) {
+    return;
   }
+
+  if(story.is_completed) {
+    return;
+  }
+
+  $('.finish-button').show();
+  $('.approve-button').show();
 };
 
 //registers events
 const registerEvents = function () {
   const contributionTextArea = $("#contribution-text").parent();
   const approveButtons = $('.approve-button');
+  const finishButton = $('.finish-button');
+
+  finishButton.on('click', (event) => {
+    event.preventDefault();
+    finishButton.fadeOut();
+    const storyId = Number($('body').attr('data-storyid'));
+    const completed = true;
+    const fullContent = story.content;
+    const params = {storyId, fullContent, completed};
+    updateStory(params);
+    completeStory();
+  });
 
   approveButtons.on('click', (event) => {
     event.preventDefault();
@@ -79,13 +101,25 @@ const registerEvents = function () {
     }
 
     const fullContent = story.content + '\n' + content
-    const params = {storyId, fullContent};
+    const params = {storyId, fullContent, completed: false};
 
-    $.ajax({
-      url: `/api/stories/${storyId}`,
-      method: 'PUT',
-      data: params
-    }).then(loadStory());
+    updateStory(params);
   });
   contributionTextArea.submit(submitContribution);
+};
+
+const updateStory = function(params) {
+  $.ajax({
+    url: `/api/stories/${params.storyId}`,
+    method: 'PUT',
+    data: params
+  }).then(data => {
+    loadStory();
+    story = data.story;
+  })
+};
+
+const completeStory = function() {
+  $('.new-contribution').remove();
+  $('.contributions-container').remove();
 };

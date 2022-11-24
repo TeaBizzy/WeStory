@@ -17,6 +17,7 @@ const loadStory = function() {
 
 const renderStory = function(paragraphs) {
   const storyContainer = $('.story-content');
+  storyContainer.empty();
   for(const paragraph of paragraphs) {
     const newParagraph = generateParagraph(paragraph)
     storyContainer.append(newParagraph);
