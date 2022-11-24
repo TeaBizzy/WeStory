@@ -24,8 +24,8 @@ const loadContributions = function () {
       .then((data) => {
         totalCountByUser(data.contributions); // check to see if this is needed;
 
-        renderContributions(data.contributions);
-        resolve(data.contributions);
+        renderContributions(data.contributions, data.upvotedUser);
+        resolve(data.contributions, data.upvotedUser);
         showAuthorControls();
       }).then(() => {
         $(`.upvote`).click(function(event) {
