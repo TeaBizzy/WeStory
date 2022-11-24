@@ -1,5 +1,6 @@
 let story;
 let contributions;
+let isAuthor = false;
 
 $(document).ready(function () {
   initPage()
@@ -38,17 +39,13 @@ const initPage = function() {
     contributions = values[1];
     const creator_id = story.creator_id;
     const user_id = Number($('body').attr('data-userid'));
-    const isAuthor = creator_id === user_id;
-
-    console.log(contributions)
+    isAuthor = creator_id === user_id;
 
     // Hides approve buttons TODO: make these hidden by default
     $('.approve-button').hide();
 
     // Display author controls
-    if(isAuthor) {
-      showAuthorControls();
-    }
+    showAuthorControls();
 
     registerEvents();
   })
@@ -56,8 +53,10 @@ const initPage = function() {
 
 // Shows author controls
 const showAuthorControls = function() {
-  $('.finish-button').show();
-  $('.approve-button').show();
+  if(isAuthor) {
+    $('.finish-button').show();
+    $('.approve-button').show();
+  }
 };
 
 //registers events
