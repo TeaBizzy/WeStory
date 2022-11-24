@@ -24,7 +24,7 @@
   <script defer src="/scripts/story-creation.js"></script>
 </head>
 
-<body data-userid="<%= userId %>">
+<body data-userid="<%= id %>">
   <header>
     <%- include('partials/_header') %>
   </header>
@@ -53,7 +53,7 @@
       </form>
     </div>
   </section>
-  <span class="profile-header">Stories by @Username</span>
+  <span class="profile-header">Stories by @<%= username %></span>
   <section class="user-stories-container" id="user-stories-container"></section>
   <div class="separator"></div>
   <footer>
