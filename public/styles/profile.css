@@ -302,6 +302,7 @@ textarea:focus {
   margin-top: 2vw;
   margin-bottom: 2vw;
   padding-right: 1vw;
+  width: 100%;
 }
 
 .status {
