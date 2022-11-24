@@ -17,26 +17,26 @@ $(document).ready(() => {
 const loadContributions = function () {
 
   const storyId = $("body").attr("data-storyid");
+  const userId = $("body").attr("data-userid");
+
   const promise = new Promise((resolve) => {
     $.get(`/api/contributions/${storyId}`).then((data) => {
       renderContributions(data.contributions)
       resolve(data.contributions)
-
-      ).then(() => {
-        $(`.upvote`).click(function(event) {
-          const contributionId = event.target.id;
-          event.preventDefault();
-          $.post({
-            url: '/api/upvotes',
-            data: {user_id: userId, contribution_id: contributionId},
-          })
-            .then(()=> {
-              location.reload();
-            });
-        });
-        $('.upvote').trigger('reset');
-    })
-
+    }).then(() => {
+      $(`.upvote`).click(function(event) {
+        const contributionId = event.target.id;
+        event.preventDefault();
+        $.post({
+          url: '/api/upvotes',
+          data: {user_id: userId, contribution_id: contributionId},
+        })
+          .then(()=> {
+            location.reload();
+          });
+      });
+      $('.upvote').trigger('reset');
+    });
   });
 
   return promise;
@@ -53,7 +53,7 @@ const renderContributions = function (contributions) {
 // Populates contribution html template using the given data. Returns the finished html
 const generateContribution = function (contribution) {
   const markup = `
-  <article class="contribution" data-contributionid="${contribution.contribution_id}">
+  <article class="contribution">
     <div class="contribution-header">
       <i class="fa-solid fa-user fa-contribution"></i>
       <a href="/users/${contribution.owner_id}" style="text-decoration: none">
