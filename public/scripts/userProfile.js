@@ -5,17 +5,20 @@ $(document).ready(function () {
 
 // Renders each story to the page
 const renderStories = function (stories) {
-  console.log(stories);
   for (const story of stories) {
     const $story = addStory(story);
-    $("#user-stories-container").prepend($story);
+    $("#user-stories-container").prepend($story)
+
+    if(!story.is_completed) {
+      $story.find('.status').hide();
+      continue;
+    }
   }
 };
 
 // Populates story html template using the given story data. Returns the finished html
 const addStory = function (storyData) {
-  console.log(storyData);
-  const markup = `
+  const markup = $(`
   <a href="/stories/${storyData.id}" style="text-decoration: none">
     <article class="story">
       <div class="story-header">
@@ -25,13 +28,17 @@ const addStory = function (storyData) {
       </a>
       </div>
       <div class="story-content">
-      <div class="cover-content">
-        <img src="${storyData.cover_url}">
-      </div>
-      <p class="story-paragraph">${storyData.content}</p>
+        <div class="cover-content">
+          <img src="${storyData.cover_url}">
+        </div>
+        <p class="story-paragraph">${storyData.content}</p>
+        <div class="status">
+          <i class="fa-solid fa-circle-check"></i>
+          <span class="status-message">COMPLETED</span>
+        </div>
       </div>
     </article>
-  </a>`;
+  </a>`);
   return markup;
 };
 

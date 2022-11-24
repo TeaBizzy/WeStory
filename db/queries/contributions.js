@@ -48,11 +48,20 @@ const removeUpvote = (upvote) => {
   const upvoteInfo = [upvote.contribution_id, upvote.user_id];
   return db.query(`
   DELETE FROM upvotes
-  JOIN contributions ON contributions.id = contribution_id
-  JOIN users ON users.id = owner_id
-  WHERE users.id = $2
-  AND contributions.id = $1;
+  WHERE user_id = $2
+  AND contribution_id = $1;
   `, upvoteInfo);
 };
 
-module.exports = { getContributions, addContribution, getContributionById, addUpvote, removeUpvote };
+const getUpvoteByUserId = (upvoteInfo) => {
+  return db.query(`
+  SELECT * from upvotes
+  WHERE user_id = ${upvoteInfo.user_id}
+  AND contribution_id = ${upvoteInfo.contribution_id};
+  `)
+    .then(data => {
+      return data.rows;
+    });
+}
+
+module.exports = { getContributions, addContribution, getContributionById, addUpvote, removeUpvote, getUpvoteByUserId };
