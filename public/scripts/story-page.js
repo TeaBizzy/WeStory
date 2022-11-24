@@ -7,6 +7,7 @@ $(document).ready(function () {
   $("footer").hide();
   $('.finish-button').hide();
 
+  // footer appears when the user scrolls past the end of the
   $(window).on("scroll", function () {
     let togglePosition = $(".toggle-contributions").offset().top;
     let toggleHeight = $(".toggle-contributions").outerHeight();
