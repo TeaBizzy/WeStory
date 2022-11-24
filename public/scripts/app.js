@@ -24,10 +24,14 @@ const addStory = function (storyData) {
       </a>
       </div>
       <div class="story-content">
-      <div class="cover-content">
-        <img src="${storyData.cover_url}">
-      </div>
-      <p class="story-paragraph">${storyData.content}</p>
+        <div class="cover-content">
+          <img src="${storyData.cover_url}">
+        </div>
+        <p class="story-paragraph">${storyData.content}</p>
+        <div class="status">
+          <i class="fa-solid fa-circle-check"></i>
+          <span class="status-message">COMPLETED</span>
+        </div>
       </div>
     </article>
   </a>`;

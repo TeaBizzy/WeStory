@@ -51,7 +51,7 @@ const submitContribution = function (event) {
   $.post("/api/contributions", newContribution).then((data) => {
     storyForm.trigger("reset");
     data.contribution.upvotes = 0;
-    renderContributions([data.contribution]);
+    loadContributions();
     showAuthorControls();
   });
 };

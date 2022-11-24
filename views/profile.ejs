@@ -20,12 +20,24 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/userProfile.js"></script>
   <script defer src="/scripts/composer.js"></script>
+  <script defer src="/scripts/events.js"></script>
+  <script defer src="/scripts/story-creation.js"></script>
 </head>
 
 <body data-userid="<%= userId %>">
   <header>
     <%- include('partials/_header') %>
   </header>
+  <div class="error-exceed-max-chars">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span class="error-message">You have exceeded the maximum characters in your story!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
+  <div class="error-empty-story">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span class="error-message">You cannot submit an empty story!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
   <section class="new-story">
     <div class="new-story-header">
       <span>Create New Story!</span>
@@ -34,11 +46,11 @@
       <i class="fa-solid fa-book"></i>
       <form method="POST" action="">
         <textarea name="text" id="story-text"></textarea>
+        <div class="form-icons">
+          <button type="submit" class="fa-solid fa-check"></button>
+          <button type="reset" class="fa-regular fa-trash-can"></button>
+        </div>
       </form>
-    </div>
-    <div class="form-icons">
-      <i class="fa-solid fa-check"></i>
-      <i class="fa-regular fa-trash-can"></i>
     </div>
   </section>
   <span class="profile-header">Stories by @Username</span>
