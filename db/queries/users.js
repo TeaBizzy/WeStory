@@ -12,13 +12,13 @@ const getUser = (user) => {
     });
 };
 
-const getUserById = (user) => {
+const getUserById = (userid) => {
   return db.query(`
   SELECT * FROM users
   WHERE id = $1
-  `, [user.id])
+  `, [userid])
     .then(data => {
-      return data.rows;
+      return data.rows[0];
     });
 };
 

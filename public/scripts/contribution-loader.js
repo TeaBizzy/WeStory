@@ -15,43 +15,43 @@ $(document).ready(() => {
 
 // Fetches contributions from database using AJAX
 const loadContributions = function () {
-
   const storyId = $("body").attr("data-storyid");
   const userId = $("body").attr("data-userid");
   const totalCount = {};
 
   const promise = new Promise((resolve) => {
-    $.get(`/api/contributions/${storyId}`).then((data) => {
-      console.log(totalCount);
-      totalCountByUser(data.contributions);
+    $.get(`/api/contributions/${storyId}`)
+      .then((data) => {
+        totalCountByUser(data.contributions); // check to see if this is needed;
 
-      renderContributions(data.contributions, data.upvotedUser)
-      resolve(data.contributions, data.upvotedUser)
-    }).then(() => {
-      $(`.upvote`).click(function(event) {
-        const contributionId = event.target.id;
-        event.preventDefault();
-        $.post({
-          url: '/api/upvotes',
-          data: {user_id: userId, contribution_id: contributionId},
-        })
-          .then(()=> {
-            let upvote = Number($(`#count${contributionId}`).html());
-            const classCheck = $(`#count${contributionId}.upvote-red`).length;
-            if (!classCheck) {
-              $(`#count${contributionId}`).html(upvote + 1);
-              $(`#${contributionId}`).addClass('upvote-red');
-              $(`#count${contributionId}`).addClass('upvote-red');
-            }
-            if (classCheck) {
-              $(`#count${contributionId}`).html(upvote - 1);
-              $(`#${contributionId}`).removeClass('upvote-red');
-              $(`#count${contributionId}`).removeClass('upvote-red');
-            }
-          });
+        renderContributions(data.contributions);
+        resolve(data.contributions);
+        showAuthorControls();
+      }).then(() => {
+        $(`.upvote`).click(function(event) {
+          const contributionId = event.target.id;
+          event.preventDefault();
+          $.post({
+            url: '/api/upvotes',
+            data: {user_id: userId, contribution_id: contributionId},
+          })
+            .then(()=> {
+              let upvote = Number($(`#count${contributionId}`).html());
+              const classCheck = $(`#count${contributionId}.upvote-red`).length;
+              if (!classCheck) {
+                $(`#count${contributionId}`).html(upvote + 1);
+                $(`#${contributionId}`).addClass('upvote-red');
+                $(`#count${contributionId}`).addClass('upvote-red');
+              }
+              if (classCheck) {
+                $(`#count${contributionId}`).html(upvote - 1);
+                $(`#${contributionId}`).removeClass('upvote-red');
+                $(`#count${contributionId}`).removeClass('upvote-red');
+              }
+            });
+        });
+        $(".upvote").trigger("reset");
       });
-      $('.upvote').trigger('reset');
-    });
   });
 
   const totalCountByUser = (upvoteData) => {
@@ -61,10 +61,11 @@ const loadContributions = function () {
   };
 
   return promise;
-}
+};
 
 const renderContributions = function (contributions, upvotedUsers) {
   const container = $(".contributions-container");
+  container.empty();
   for (const contribution of contributions) {
     let upvoted = false;
     for (const upvotedUser of upvotedUsers) {
