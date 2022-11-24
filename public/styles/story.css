@@ -452,6 +452,10 @@ footer {
   animation-timing-function: ease;
 }
 
+.upvote-red {
+  color: red;
+}
+
 @keyframes bounce-up {
   0% {
     transform: translateY(0);

@@ -33,9 +33,12 @@ router.get('/:story_id', (req, res) => {
   const storyId = req.params.story_id;
 
   queries.getContributions(storyId)
-    .then((contributions) =>
-        res.json({contributions})
-      )
+    .then((contributions) => {
+      queries.getUpvotesByUser(sessionCookie)
+        .then((upvotedUser) => {
+          res.json({contributions, upvotedUser});
+        });
+    })
     .catch(err => {
       res
         .status(500)

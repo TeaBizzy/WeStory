@@ -62,6 +62,16 @@ const getUpvoteByUserId = (upvoteInfo) => {
     .then(data => {
       return data.rows;
     });
+};
+
+const getUpvotesByUser = (userId) => {
+  return db.query(`
+  SELECT contribution_id from upvotes
+  WHERE user_id = ${userId}
+  `)
+    .then(data => {
+      return data.rows;
+    });
 }
 
-module.exports = { getContributions, addContribution, getContributionById, addUpvote, removeUpvote, getUpvoteByUserId };
+module.exports = { getContributions, addContribution, getContributionById, addUpvote, removeUpvote, getUpvoteByUserId, getUpvotesByUser };

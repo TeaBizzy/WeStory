@@ -36,7 +36,7 @@ router.post('/', (req, res) => {
       if (!data[0]) {
         queries.addUpvote(upvoteInfo)
           .then((upvote) =>
-            res.json({upvote})
+            res.json({upvote, userUpvoted: false})
           )
           .catch(err => {
             res
@@ -47,7 +47,7 @@ router.post('/', (req, res) => {
       if (data[0]) {
         queries.removeUpvote(upvoteInfo)
           .then((upvote) =>
-            res.json({upvote})
+            res.json({upvote, userUpvoted: true})
           )
           .catch(err => {
             res
