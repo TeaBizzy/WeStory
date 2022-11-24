@@ -10,33 +10,39 @@
 // *----------------------------- Functions -----------------------------* //
 
 $(document).ready(() => {
-  loadContributions();
+  // loadContributions();
 });
 
 // Fetches contributions from database using AJAX
 const loadContributions = function () {
+
   const storyId = $("body").attr("data-storyid");
-  const userId = $("body").attr("data-userid");
+  const promise = new Promise((resolve) => {
+    $.get(`/api/contributions/${storyId}`).then((data) => {
+      renderContributions(data.contributions)
+      resolve(data.contributions)
 
-  $.get(`/api/contributions/${storyId}`).then((data) =>
-    renderContributions(data.contributions)
-  ).then(() => {
-    $(`.upvote`).click(function(event) {
-      const contributionId = event.target.id;
-      event.preventDefault();
-      $.post({
-        url: '/api/upvotes',
-        data: {user_id: userId, contribution_id: contributionId},
-      })
-        .then(()=> {
-          location.reload();
+      ).then(() => {
+        $(`.upvote`).click(function(event) {
+          const contributionId = event.target.id;
+          event.preventDefault();
+          $.post({
+            url: '/api/upvotes',
+            data: {user_id: userId, contribution_id: contributionId},
+          })
+            .then(()=> {
+              location.reload();
+            });
         });
-    });
-    $('.upvote').trigger('reset');
-  });
-};
+        $('.upvote').trigger('reset');
+    })
 
-const renderContributions = function(contributions) {
+  });
+
+  return promise;
+}
+
+const renderContributions = function (contributions) {
   const container = $(".contributions-container");
   for (const contribution of contributions) {
     const newContribution = generateContribution(contribution);
@@ -47,7 +53,7 @@ const renderContributions = function(contributions) {
 // Populates contribution html template using the given data. Returns the finished html
 const generateContribution = function (contribution) {
   const markup = `
-  <article class="contribution" data-contributionId="<%= ${contribution.contribution_id} %>">
+  <article class="contribution" data-contributionid="${contribution.contribution_id}">
     <div class="contribution-header">
       <i class="fa-solid fa-user fa-contribution"></i>
       <a href="/users/${contribution.owner_id}" style="text-decoration: none">
@@ -62,7 +68,7 @@ const generateContribution = function (contribution) {
       <p class="contribution-paragraph">${contribution.content}</p>
     </div>
     <section class="contribution-footer">
-      <div class="approve-button">
+      <div class="approve-button" style="display: none">
         <span class="approve">Approve</span>
         <i class="fa-solid fa-thumbs-up"></i>
       </div>
