@@ -13,7 +13,7 @@
 
 const express = require('express');
 const router  = express.Router();
-
+const queries = require('../../db/queries/contributions');
 
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
@@ -28,7 +28,34 @@ router.post('/', (req, res) => {
     err = new Error('Access Denied')
     return res.status(401).send();
   }
-  res.send('Insert a new upvote to the upvotes table');
+  console.log(req.body);
+  const upvoteInfo = {user_id: sessionCookie, contribution_id: req.body.contribution_id};
+  queries.getUpvoteByUserId(upvoteInfo)
+    .then((data) => {
+      console.log(data);
+      if (!data[0]) {
+        queries.addUpvote(upvoteInfo)
+          .then((upvote) =>
+            res.json({upvote})
+          )
+          .catch(err => {
+            res
+              .status(500)
+              .json({error: err.message});
+          });
+      }
+      if (data[0]) {
+        queries.removeUpvote(upvoteInfo)
+          .then((upvote) =>
+            res.json({upvote})
+          )
+          .catch(err => {
+            res
+              .status(500)
+              .json({error: err.message});
+          });
+      }
+    });
 });
 
 router.delete('/:user_id', (req, res) => {
