@@ -13,6 +13,7 @@
 const express = require("express");
 const router = express.Router();
 const users = require('../../db/queries/users');
+const storyQueries = require('../../db/queries/stories');
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
@@ -40,13 +41,15 @@ router.get("/:id", (req, res) => {
     return res.redirect("/login");
   }
 
-  users.getAvatarById(sessionCookie)
-    .then(resolve => {
-      const storyId = req.params.id;
-      const templateVars = {id: sessionCookie, storyId, avatarUrl: resolve.avatar_url};
-      res.render("../views/story.ejs", templateVars);
-    });
+  const storyId = req.params.id;
 
+  Promise.all([storyQueries.getStoryById(storyId), users.getUserById(sessionCookie)])
+  .then((values) => {
+    const storyData = values[0];
+    const userData = values[1];
+    const templateVars = {id: sessionCookie, title: storyData.title, storyId, coverImg: storyData.cover_url, avatarUrl: userData.avatar_url, username: userData.username};
+    res.render('../views/story.ejs', templateVars);
+  })
 });
 
 // ___________________________________________________________________________ //
