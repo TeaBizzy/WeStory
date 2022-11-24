@@ -15,35 +15,36 @@ $(document).ready(() => {
 
 // Fetches contributions from database using AJAX
 const loadContributions = function () {
-
   const storyId = $("body").attr("data-storyid");
   const userId = $("body").attr("data-userid");
 
   const promise = new Promise((resolve) => {
-    $.get(`/api/contributions/${storyId}`).then((data) => {
-      renderContributions(data.contributions)
-      resolve(data.contributions)
-    }).then(() => {
-      $(`.upvote`).click(function(event) {
-        const contributionId = event.target.id;
-        event.preventDefault();
-        $.post({
-          url: '/api/upvotes',
-          data: {user_id: userId, contribution_id: contributionId},
-        })
-          .then(()=> {
+    $.get(`/api/contributions/${storyId}`)
+      .then((data) => {
+        renderContributions(data.contributions);
+        resolve(data.contributions);
+      })
+      .then(() => {
+        $(`.upvote`).click(function (event) {
+          const contributionId = event.target.id;
+          event.preventDefault();
+          $.post({
+            url: "/api/upvotes",
+            data: { user_id: userId, contribution_id: contributionId },
+          }).then(() => {
             location.reload();
           });
+        });
+        $(".upvote").trigger("reset");
       });
-      $('.upvote').trigger('reset');
-    });
   });
 
   return promise;
-}
+};
 
 const renderContributions = function (contributions) {
   const container = $(".contributions-container");
+  container.empty();
   for (const contribution of contributions) {
     const newContribution = generateContribution(contribution);
     container.prepend(newContribution);
