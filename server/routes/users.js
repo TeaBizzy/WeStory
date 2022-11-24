@@ -27,11 +27,11 @@ router.get('/:id', (req, res) => {
     return res.redirect('/login');
   }
 
-  users.getAvatarById(sessionCookie)
-    .then(resolve => {
-      const templateVars = {id: sessionCookie, userId, avatarUrl: resolve.avatar_url};
+  users.getUserById(sessionCookie)
+  .then((data) => {
+    const templateVars = {id: sessionCookie, avatarUrl: data.avatar_url, username: data.username};
       res.render('../views/profile.ejs', templateVars);
-    });
+  })
 });
 
 
