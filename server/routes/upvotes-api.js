@@ -13,20 +13,74 @@
 
 const express = require('express');
 const router  = express.Router();
-
+const queries = require('../../db/queries/contributions');
 
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
 router.post('/', (req, res) => {
-  res.send('Insert a new upvote to the upvotes table');
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
+  console.log(req.body);
+  const upvoteInfo = {user_id: sessionCookie, contribution_id: req.body.contribution_id};
+  queries.getUpvoteByUserId(upvoteInfo)
+    .then((data) => {
+      console.log(data);
+      if (!data[0]) {
+        queries.addUpvote(upvoteInfo)
+          .then((upvote) =>
+            res.json({upvote})
+          )
+          .catch(err => {
+            res
+              .status(500)
+              .json({error: err.message});
+          });
+      }
+      if (data[0]) {
+        queries.removeUpvote(upvoteInfo)
+          .then((upvote) =>
+            res.json({upvote})
+          )
+          .catch(err => {
+            res
+              .status(500)
+              .json({error: err.message});
+          });
+      }
+    });
 });
 
 router.delete('/:user_id', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
   res.send('Delete from the upvotes table by user_id');
 });
 
 router.delete('/:contribution_id', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
   res.send('Delete from the upvotes table by contribution_id');
 });
 

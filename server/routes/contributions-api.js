@@ -13,25 +13,84 @@
 
 const express = require('express');
 const router  = express.Router();
+const queries = require('../../db/queries/contributions');
 
 
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
 router.get('/:story_id', (req, res) => {
-  res.send('Query for contributions by story_id');
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
+
+  const storyId = req.params.story_id;
+
+  queries.getContributions(storyId)
+    .then((contributions) =>
+        res.json({contributions})
+      )
+    .catch(err => {
+      res
+        .status(500)
+        .json({error: err.message});
+    })
 });
 
 router.post('/', (req, res) => {
-  res.send('Insert a new contribution into the DB & display it');
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
+
+  const newContribution = req.body;
+
+  queries.addContribution(newContribution)
+    .then(contribution => {
+      res.json({contribution});
+    })
+    .catch(err => {
+      res
+      .status(500)
+      .json({ error: err.message });
+    });
 });
 
 
 router.put('/:id', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
   res.send(`Modify contribution: ${req.params.id} & display it`);
 });
 
 router.delete('/:id', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Validates requester is authorized
+  if (!isLoggedIn) {
+    err = new Error('Access Denied')
+    return res.status(401).send();
+  }
   res.send(`Delete contribution: ${req.params.id} & remove it from document`);
 });
 

@@ -1,18 +1,19 @@
 // Client facing scripts here
 $(document).ready(function () {
-  loadStories();
+  loadStory();
 });
 
 // Renders each story to the page
 const renderStories = function (stories) {
   for (const story of stories) {
-    const paragraphs = story.content.split("\n");
+    const paragraphs = story.content.split('\n');
     const lastParagraph = paragraphs[paragraphs.length - 1];
     const $story = addStory(story, lastParagraph);
 
-    $("#story-container").prepend($story);
-    if (!story.is_completed) {
-      $story.find(".status").hide();
+    $("#user-stories-container").prepend($story)
+
+    if(!story.is_completed) {
+      $story.find('.status').hide();
       continue;
     }
   }
@@ -45,8 +46,9 @@ const addStory = function (storyData, lastParagraph) {
 };
 
 // Fetches story data with an async request from the API
-const loadStories = function () {
-  $.get("/api/stories").then(function (storyData) {
+const loadStory = function () {
+  const userId = $("body").attr("data-userid");
+  $.get(`/api/stories/user/${userId}/`).then(function (storyData) {
     renderStories(storyData.stories);
   });
 };

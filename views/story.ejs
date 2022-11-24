@@ -18,72 +18,65 @@
   <link rel="stylesheet" href="/styles/layout.css" />
 
   <script src="/vendor/jquery-3.0.0.js"></script>
-  <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/contribution-loader.js"></script>
+  <script defer src="/scripts/contribution-creation.js"></script>
+  <script defer src="/scripts/upvote.js"></script>
+  <script defer src="/scripts/story-loader.js"></script>
+  <script defer src="/scripts/story-page.js"></script>
 </head>
 
-<body>
+<body data-storyid="<%= storyId %>" data-userid="<%= id %>">
   <nav>
-    <a href="/stories"><span class="logo">WeStory</span></a>
-    <div class="contribute-button">
-      <span class="contribute">contribute</span>
-      <i class="fa-solid fa-pencil"></i>
+    <a href="/stories" style="text-decoration: none"><span class="logo">WeStory</span></a>
+    <div class="finish-button">
+      <span class="finish">Finish</span>
+      <i class="fa-regular fa-gem"></i>
     </div>
     <div class="user">
-      <a href="/users/<%= id %>"><i class="fa-solid fa-user"></i></a>
-      <a href="/logout"><span class="logout">Logout</span></a>
+      <a href="/users/<%= id %>" style="text-decoration: none;"><img src="<%= avatarUrl %>"></a>
+      <a href="/logout" style="text-decoration: none;"><span class="logout">Logout</span></a>
     </div>
   </nav>
   <section class="story-container">
     <article class="story">
       <div class="story-header">
         <div class="story-heading">
-          <span class="story-title">Lord of the Things</span>
-          <span class="story-creator-handle">@creator-username</span>
+          <span class="story-title"><%= title %></span>
+          <span class="story-creator-handle">@<%= username %></span>
         </div>
-          <span class="image">INSERT IMAGE</span>
+        <div class="cover-content">
+          <img src="<%= coverImg %>" class="image">
+        </div>
       </div>
       <div class="story-content">
-        <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
       </div>
     </article>
-    <section class="toggle-contributions">
-      <span>View Contributions</span>
-    </section>
-    <section class="toggle-story">
-      <span>View Story</span>
-    </section>
-  <section class="new-contribution">
-    <form method="POST" action="">
-      <textarea name="text" id="contribution-text" placeholder="Start writing to contribute!"></textarea>
-    </form>
-    <div class="form-icons">
-      <i class="fa-solid fa-check"></i>
-      <i class="fa-regular fa-trash-can"></i>
-    </div>
   </section>
-    <section class="contributions-container">
-      <article class="contribution">
-        <div class="contribution-header">
-            <i class="fa-solid fa-user fa-contribution"></i>
-          <span class="contribution-creator-handle">@creator-username</span>
-        </div>
-          <div class="contribution-content">
-            <div class="upvote-icons">
-              <i class="fa-solid fa-heart"></i>
-              <span class="upvote-count">0</span>
-            </div>
-            <p class="contribution-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
-          </div>
-          <section class="contribution-footer">
-            <div class="approve-button">
-              <span class="approve">Approve</span>
-              <i class="fa-solid fa-thumbs-up"></i>
-            </div>
-          </section>
-    </section>
-    <footer>
-      <i class="fa-solid fa-arrow-up"></i>
-    </footer>
+  <span class="toggle-contributions">View Contributions</span>
+  <div class="error-exceed-max-chars">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span class="error-message">You have exceeded the maximum characters in your contribution!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
+  <div class="error-empty-contribution">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span class="error-message">You cannot submit an empty contribution!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
+  <section class="new-contribution">
+    <form>
+      <textarea name="text" id="contribution-text" placeholder="Start writing to contribute!"></textarea>
+      <div class="form-icons">
+        <button type="submit" class="fa-solid fa-check"></button>
+        <button type="reset" class="fa-regular fa-trash-can"></button>
+      </div>
+    </form>
+  </section>
+  <section class="contributions-container"></section>
+  <div class="separator"></div>
+  <footer>
+    <i class="fa-solid fa-arrow-up"></i>
+  </footer>
 </body>
 
 </html>

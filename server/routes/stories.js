@@ -12,7 +12,8 @@
 
 const express = require("express");
 const router = express.Router();
-
+const users = require('../../db/queries/users');
+const storyQueries = require('../../db/queries/stories');
 // ___________________________________________________________________________ //
 // *-------------------------------- Routing --------------------------------* //
 
@@ -24,9 +25,11 @@ router.get("/", (req, res) => {
   if (!isLoggedIn) {
     return res.redirect("/login");
   }
-
-  const templateVars = {id: sessionCookie}
-  res.render('../views/index.ejs', templateVars);
+  users.getUserById(sessionCookie)
+  .then((data) => {
+    const templateVars = {id: sessionCookie, avatarUrl: data.avatar_url, username: data.username};
+      res.render('../views/index.ejs', templateVars);
+  })
 });
 
 router.get("/:id", (req, res) => {
@@ -38,8 +41,15 @@ router.get("/:id", (req, res) => {
     return res.redirect("/login");
   }
 
-  const templateVars = {id: sessionCookie}
-  res.render('../views/story.ejs', templateVars);
+  const storyId = req.params.id;
+
+  Promise.all([storyQueries.getStoryById(storyId), users.getUserById(sessionCookie)])
+  .then((values) => {
+    const storyData = values[0];
+    const userData = values[1];
+    const templateVars = {id: sessionCookie, title: storyData.title, storyId, coverImg: storyData.cover_url, avatarUrl: userData.avatar_url, username: userData.username};
+    res.render('../views/story.ejs', templateVars);
+  })
 });
 
 // ___________________________________________________________________________ //

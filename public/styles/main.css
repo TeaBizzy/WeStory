@@ -33,8 +33,15 @@ nav {
   padding-right: 48px;
 }
 
+.user img {
+  width: 3em;
+  border-radius: 50%;
+  border: 3px solid #E65100;
+}
+
 .logout {
   font-size: 40px;
+  color: #E65100;
 }
 
 .logout:hover {
@@ -45,6 +52,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #E65100;
   outline: solid #FFFFFF;
   border-radius: 30px;
   font-size: 30px;
@@ -101,8 +109,37 @@ nav {
   font-size: 40px;
 }
 
+.error-exceed-max-chars {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-family: "Quicksand", cursive;
+  font-weight: bold;
+  border: 3px solid red;
+  height: 50px;
+  margin: 150px 48px 15px 48px;
+}
+
+.error-empty-story {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-family: "Quicksand", cursive;
+  font-weight: bold;
+  border: 3px solid red;
+  height: 50px;
+  margin: 150px 48px 15px 48px;
+}
+
+.error-message {
+  margin: 0px 30px 0px 30px;
+}
+
+
 .new-story {
-  margin: 155px 48px 0px 48px;
+  margin: 150px 48px 0px 48px;
   background-color: #EEEEEE;
   outline: solid #2196F3 2px;
   height: 220px;
@@ -192,17 +229,12 @@ textarea:focus {
 .welcome {
   font-family: "Quicksand", cursive;
   font-size: 35px;
-  margin: 30px 48px 0px 48px;
+  margin: 155px 48px 0px 48px;
   font-weight: bold;
 }
 
-.story-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .story {
-  margin: 10px 48px 40px 48px;
+  margin: 10px 48px min(35px, 3.5vw) 48px;
   background-color: #EEEEEE;
   outline: solid #2196F3 2px;
   box-shadow: 5px 5px 4px gray;
@@ -212,7 +244,7 @@ textarea:focus {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  padding-left: 10px;
+  padding-left: min(1.5vw, 10px);
   background-color: #2196F3;
   color: #FFFFFF;
 }
@@ -220,6 +252,7 @@ textarea:focus {
 .story-title {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
+  color: #EEEEEE;
 }
 
 .story-title:hover {
@@ -228,22 +261,68 @@ textarea:focus {
 
 .story-creator-handle {
   font-family: "Quicksand", cursive;
-  margin: 10px 10px;
+  margin: 8px 10px 0px 0px;
+  color: #EEEEEE;
 }
 
 .story-creator-handle:hover {
   cursor: pointer;
 }
 
+.story-content-container {
+  width: 100%;
+}
+
 .story-content {
   display: flex;
   flex-direction: row;
+  max-height: 155px;
+  overflow: hidden;
+}
+
+.cover-content {
+  padding-right: 2vw;
+}
+
+.cover-content img {
+  height: 100%;
+  width: 100%;
+  width: 155px;
 }
 
 .story-paragraph {
   font-family: "Quicksand", cursive;
-  font-size: 26px;
-  margin-top: 30px;
+  font-size: 2.5vw;
+  margin-top: 2vw;
+  margin-bottom: 2vw;
+  padding-right: 1vw;
+  width: 100%;
+}
+
+.status {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-right: 15px;
+}
+
+.fa-circle-check {
+  color: #2196F3;
+  font-size: 40px;
+  border-radius: 30px;
+  outline: solid #FFFFFF;
+}
+
+.status-message {
+  font-family: 'Quicksand', cursive;
+  font-size: 14px;
+  font-weight: bold;
+  margin-top: 5px;
+}
+
+.separator {
+  margin: 10px 0px 130px 0px;
 }
 
 footer {
@@ -290,5 +369,20 @@ footer {
   }
   100% {
     transform: translateY(0);
+  }
+}
+
+@media screen and (min-width: 950px) {
+  .story-content {
+    max-height: 155px;
+    overflow: hidden;
+  }
+  .story-paragraph {
+    font-family: "Quicksand", cursive;
+    font-size: 26px;
+    margin-top: 30px;
+  }
+  .cover-content img {
+    height: 100%;
   }
 }

@@ -13,6 +13,7 @@ nav {
   height: 100px;
   width: 100%;
   position: fixed;
+  z-index: 2;
 }
 
 .logo {
@@ -28,13 +29,19 @@ nav {
 
 .user {
   display: flex;
-  color: #E65100;
   font-family: "Bebas Neue", cursive;
   padding-right: 48px;
 }
 
+.user img {
+  width: 3em;
+  border-radius: 50%;
+  border: 3px solid #E65100;
+}
+
 .logout {
   font-size: 40px;
+  color: #E65100;
 }
 
 .logout:hover {
@@ -45,6 +52,7 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
+  color: #E65100;
   outline: solid #FFFFFF;
   border-radius: 30px;
   font-size: 30px;
@@ -58,7 +66,7 @@ nav {
   cursor: pointer;
 }
 
-.contribute-button {
+.finish-button {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -86,18 +94,18 @@ nav {
     transform: translateY(0);
   }
 }
-.contribute-button:hover {
+.finish-button:hover {
   cursor: pointer;
   animation-name: bounce-down;
   animation-timing-function: ease;
 }
 
-.contribute {
+.finish {
   font-family: "Bebas Neue", cursive;
   font-size: 25px;
 }
 
-.fa-pencil {
+.fa-gem {
   font-size: 40px;
 }
 
@@ -146,17 +154,28 @@ nav {
   cursor: pointer;
 }
 
+.cover-content {
+  width: 100%;
+  height: 300px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+
+}
+
 .story-content {
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin: 10px 48px 0px 48px;
+  margin: 0px 48px 0px 48px;
 }
 
 .story-paragraph {
   font-family: "Quicksand", cursive;
   font-size: 26px;
-  margin-top: 35px;
+  margin-top: 30px;
 }
 
 .toggle-contributions {
@@ -168,17 +187,42 @@ nav {
   font-family: "Bebas Neue", cursive;
   font-size: 30px;
   height: 80px;
+  width: 100%;
+  position: sticky;
+  bottom: 0px;
+  z-index: 1;
 }
 
-.toggle-story {
+.toggle-contributions:hover {
+  cursor: pointer;
+}
+
+.error-exceed-max-chars {
   display: flex;
-  align-items: center;
   justify-content: center;
-  background-color: #FFA726;
-  color: #E65100;
-  font-family: "Bebas Neue", cursive;
-  font-size: 30px;
-  height: 80px;
+  align-items: center;
+  color: red;
+  font-family: "Quicksand", cursive;
+  font-weight: bold;
+  border: 3px solid red;
+  height: 50px;
+  margin: 10px 48px 0px 48px;
+}
+
+.error-empty-contribution {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: red;
+  font-family: "Quicksand", cursive;
+  font-weight: bold;
+  border: 3px solid red;
+  height: 50px;
+  margin: 10px 48px 0px 48px;
+}
+
+.error-message {
+  margin: 0px 30px 0px 30px;
 }
 
 .new-contribution {
@@ -368,6 +412,10 @@ textarea:focus {
   cursor: pointer;
 }
 
+.separator {
+  margin: 10px 0px 130px 0px;
+}
+
 footer {
   display: flex;
   align-items: center;
@@ -377,6 +425,7 @@ footer {
   bottom: 0;
   background-color: #FFA726;
   position: fixed;
+  z-index: 2;
 }
 
 .fa-arrow-up {

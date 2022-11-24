@@ -19,78 +19,43 @@
 
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/app.js"></script>
+  <script defer src="/scripts/events.js"></script>
+  <script defer src="/scripts/composer.js"></script>
+  <script defer src="/scripts/story-creation.js"></script>
 </head>
 
-<body>
-  <nav>
-    <a href="/stories"><span class="logo">WeStory</span></a>
-    <div class="create-button">
-      <span class="create">Create</span>
-      <i class="fa-solid fa-pencil"></i>
-    </div>
-    <div class="user">
-      <a href="/users/<%= id %>"><i class="fa-solid fa-user"></i></a>
-      <a href="/logout"><span class="logout">Logout</span></a>
-    </div>
-  </nav>
+<body data-userid="<%= id %>">
+  <header>
+    <%- include('partials/_header') %>
+  </header>
+  <div class="error-exceed-max-chars">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span class="error-message">You have exceeded the maximum characters in your story!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
+  <div class="error-empty-story">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span class="error-message">You cannot submit an empty story!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
   <section class="new-story">
     <div class="new-story-header">
       <span>Create New Story!</span>
     </div>
     <div class="new-story-content">
       <i class="fa-solid fa-book"></i>
-      <form method="POST" action="">
+      <form id="story-form">
         <textarea name="text" id="story-text"></textarea>
+        <div class="form-icons">
+          <button type="submit" class="fa-solid fa-check"></button>
+          <button type="reset" class="fa-regular fa-trash-can"></button>
+        </div>
       </form>
     </div>
-    <div class="form-icons">
-      <i class="fa-solid fa-check"></i>
-      <i class="fa-regular fa-trash-can"></i>
-    </div>
   </section>
-  <span class="welcome">Welcome @Username</span>
-  <section class="story-container" id="story-container">
-    <article class="story">
-      <div class="story-header">
-        <span class="story-title">Lord of the Things</span>
-        <span class="story-creator-handle">@creator-username</span>
-      </div>
-      <div class="story-content">
-        <i class="fa-solid fa-book"></i>
-        <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
-      </div>
-    </article>
-    <article class="story">
-      <div class="story-header">
-        <span class="story-title">Lord of the Things</span>
-        <span class="story-creator-handle">@creator-username</span>
-      </div>
-      <div class="story-content">
-        <i class="fa-solid fa-book"></i>
-        <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
-      </div>
-    </article>
-    <article class="story">
-      <div class="story-header">
-        <span class="story-title">Lord of the Things</span>
-        <span class="story-creator-handle">@creator-username</span>
-      </div>
-      <div class="story-content">
-        <i class="fa-solid fa-book"></i>
-        <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
-      </div>
-    </article>
-    <article class="story">
-      <div class="story-header">
-        <span class="story-title">Lord of the Things</span>
-        <span class="story-creator-handle">@creator-username</span>
-      </div>
-      <div class="story-content">
-        <i class="fa-solid fa-book"></i>
-        <p class="story-paragraph">This is a story, the character limit is upwards of 160 characters. This paragraph is about 160 characters in length. No story, or contribution can be longer!</p>
-      </div>
-    </article>
-  </section>
+  <span class="welcome">Welcome @<%= username %></span>
+  <section class="story-container" id="story-container"></section>
+  <div class="separator"></div>
   <footer>
     <i class="fa-solid fa-arrow-up"></i>
   </footer>
