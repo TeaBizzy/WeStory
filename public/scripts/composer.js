@@ -1,6 +1,8 @@
 $(document).ready(function () {
   // Click nav bar button to hide/show new story form
   $(".new-story").hide();
+  $(".error-empty-story").hide();
+  $(".error-exceed-max-chars").hide();
 
   $(".create-button").on("click", () => {
     if ($(".new-story").first().is(":hidden")) {
@@ -8,6 +10,9 @@ $(document).ready(function () {
       $(".welcome").css("margin-top", 30);
       $(".profile-header").css("margin-top", 30);
     } else {
+      $(".error-empty-story").hide();
+      $(".error-exceed-max-chars").hide();
+      $(".new-story").css("margin-top", 150);
       $(".new-story").slideUp(800);
       $(".welcome").css("margin-top", 150);
       $(".profile-header").css("margin-top", 150);

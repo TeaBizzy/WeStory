@@ -28,13 +28,23 @@
   <header>
     <%- include('partials/_header') %>
   </header>
+  <div class="error-exceed-max-chars">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span class="error-message">You have exceeded the maximum characters in your story!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
+  <div class="error-empty-story">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span class="error-message">You cannot submit an empty story!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
   <section class="new-story">
     <div class="new-story-header">
       <span>Create New Story!</span>
     </div>
     <div class="new-story-content">
       <i class="fa-solid fa-book"></i>
-      <form>
+      <form id="story-form">
         <textarea name="text" id="story-text"></textarea>
         <div class="form-icons">
           <button type="submit" class="fa-solid fa-check"></button>
