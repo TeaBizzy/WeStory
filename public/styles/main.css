@@ -233,11 +233,6 @@ textarea:focus {
   font-weight: bold;
 }
 
-.story-container {
-  display: flex;
-  flex-direction: column;
-}
-
 .story {
   margin: 10px 48px min(35px, 3.5vw) 48px;
   background-color: #EEEEEE;
@@ -274,6 +269,10 @@ textarea:focus {
   cursor: pointer;
 }
 
+.story-content-container {
+  width: 100%;
+}
+
 .story-content {
   display: flex;
   flex-direction: row;
@@ -297,6 +296,7 @@ textarea:focus {
   margin-top: 2vw;
   margin-bottom: 2vw;
   padding-right: 1vw;
+  width: 100%;
 }
 
 .status {

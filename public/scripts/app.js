@@ -6,13 +6,13 @@ $(document).ready(function () {
 // Renders each story to the page
 const renderStories = function (stories) {
   for (const story of stories) {
-    const paragraphs = story.content.split('\n');
+    const paragraphs = story.content.split("\n");
     const lastParagraph = paragraphs[paragraphs.length - 1];
     const $story = addStory(story, lastParagraph);
 
     $("#story-container").prepend($story);
-    if(!story.is_completed) {
-      $story.find('.status').hide();
+    if (!story.is_completed) {
+      $story.find(".status").hide();
       continue;
     }
   }
