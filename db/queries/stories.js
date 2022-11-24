@@ -35,7 +35,7 @@ const getStoryById = (id) => {
 
 const getStoryByUserId = (user) => {
   return db.query(`
-  SELECT stories.id, creator_id, users.username, title, cover_url, content FROM stories
+  SELECT stories.id, creator_id, users.username, title, cover_url, is_completed, content FROM stories
   JOIN users ON users.id = creator_id
   WHERE users.id = ${user.id}
   GROUP BY users.username, stories.id;
