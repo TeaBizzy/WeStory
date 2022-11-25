@@ -306,10 +306,16 @@ textarea:focus {
   cursor: pointer;
 }
 
+a {
+  display:flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .story-creator-handle {
   font-family: "Quicksand", cursive;
-  margin: 10px 10px;
-  color: #FFFFFF;
+  color: #EEEEEE;
+  margin-right: 10px;
 }
 
 .story-creator-handle:hover {
@@ -333,14 +339,15 @@ textarea:focus {
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
   overflow-wrap: break-word;
+  width: 100%;
 }
 
 .status {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  align-items: center;
   flex-grow: 1;
-  align-items: end;
   margin-right: 15px;
 }
 
