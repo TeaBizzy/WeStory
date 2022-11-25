@@ -154,17 +154,29 @@ nav {
   cursor: pointer;
 }
 
+.cover-content {
+  width: 100%;
+  height: 300px;
+}
+
+.image {
+  width: 100%;
+  height: 100%;
+
+}
+
 .story-content {
   display: flex;
   flex-direction: column;
   height: 100%;
-  margin: 10px 48px 0px 48px;
+  margin: 0px 48px 0px 48px;
 }
 
 .story-paragraph {
   font-family: "Quicksand", cursive;
   font-size: 26px;
-  margin-top: 35px;
+  margin-top: 30px;
+  overflow-wrap: break-word;
 }
 
 .toggle-contributions {
@@ -439,6 +451,10 @@ footer {
   cursor: pointer;
   animation-name: bounce-up;
   animation-timing-function: ease;
+}
+
+.upvote-red {
+  color: red;
 }
 
 @keyframes bounce-up {

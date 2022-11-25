@@ -15,8 +15,11 @@ const submitStory = function (event) {
 
   // Setup variables
   const textArea = $("#story-text");
+  const titleArea = $("#story-title");
+
   const storyForm = textArea.parent();
   const content = textArea.val();
+  const title = titleArea.val()
   const user_id = $("body").attr("data-userId");
   const contentLength = content.length;
 
@@ -26,24 +29,27 @@ const submitStory = function (event) {
   // Error handling
   if (contentLength > 160) {
     $(".error-empty-story").hide();
-    $(".error-exceed-max-chars").slideDown("slow");
+    $(".error-exceed-max-chars").slideDown(300);
     $(".new-story").css("margin-top", 0);
+    $('#story-text').focus();
     return;
   } else if (!contentLength) {
     $(".error-exceed-max-chars").hide();
-    $(".error-empty-story").slideDown("slow");
+    $(".error-empty-story").slideDown(300);
     $(".new-story").css("margin-top", 0);
+    $('#story-text').focus();
     return;
   } else {
-    $(".error-exceed-max-chars").slideUp("slow");
-    $(".error-empty-story").slideUp("slow");
+    $(".error-exceed-max-chars").slideUp(300);
+    $(".error-empty-story").slideUp(300);
+    $('#story-text').focus();
   }
 
   // Build the params object
   const newStory = {
     user_id,
     content,
-    title: `Story ${Math.floor(Math.random() * 1000)}`,
+    title,
   };
 
   // Create story, and redirect user.
