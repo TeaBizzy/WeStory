@@ -15,8 +15,11 @@ const submitStory = function (event) {
 
   // Setup variables
   const textArea = $("#story-text");
+  const titleArea = $("#story-title");
+
   const storyForm = textArea.parent();
   const content = textArea.val();
+  const title = titleArea.val()
   const user_id = $("body").attr("data-userId");
   const contentLength = content.length;
 
@@ -46,7 +49,7 @@ const submitStory = function (event) {
   const newStory = {
     user_id,
     content,
-    title: `Story ${Math.floor(Math.random() * 1000)}`,
+    title,
   };
 
   // Create story, and redirect user.

@@ -8,7 +8,7 @@ $(document).ready(function () {
   $(".create-button").on("click", () => {
     if ($(".new-story").first().is(":hidden")) {
       $(".new-story").slideDown(500);
-      $('#story-text').focus();
+      $('#story-title').focus();
     } else {
       $(".error-empty-story").hide();
       $(".error-exceed-max-chars").hide();
