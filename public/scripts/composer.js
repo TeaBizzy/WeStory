@@ -7,16 +7,13 @@ $(document).ready(function () {
 
   $(".create-button").on("click", () => {
     if ($(".new-story").first().is(":hidden")) {
-      $(".new-story").slideDown(800);
-      $(".welcome").css("margin-top", 30);
-      $(".profile-header").css("margin-top", 30);
+      $(".new-story").slideDown(500);
+      $('#story-title').focus();
     } else {
       $(".error-empty-story").hide();
       $(".error-exceed-max-chars").hide();
-      $(".new-story").css("margin-top", 150);
-      $(".new-story").slideUp(800);
-      $(".welcome").css("margin-top", 150);
-      $(".profile-header").css("margin-top", 150);
+      $(".new-story").slideUp(500);
+
     }
   });
 
