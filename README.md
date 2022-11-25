@@ -63,6 +63,10 @@
    ```
    http://localhost:8080/
    ```
+3. Login by visiting the following URL. You can login with numbers 1-3
+   ```
+   http://localhost:8080/login/1
+   ```
 
 ---
 <!-- USAGE EXAMPLES -->
@@ -71,23 +75,15 @@
 ### Start A New Story
 * Click the Create button to display the text box.
 
-  ![Create Button]()
+  ![Create Button](docs/Create-Button.png)
 
 * Compose a story of 1-160 characters long, and click the orange checkmark to submit!
 
-  ![Textbox]()
+  ![Textbox](docs/New-Story.png)
 
 * If a story is invalid an error will appear.
 
-  ![Error]()
-
----
-
-### Show / Hide Contributions
-
-* Click the view contribution button to display contributions from other users, or write a new contribution.
-
-  ![Contributions Button]()
+  ![Error](docs/Error.png)
 
 ---
 
@@ -95,11 +91,11 @@
 
 * Contributions have the same limitations as a new story, and the creation form is very similar.
 
-  ![Contributions Form]()
+  ![Contributions Form](docs/Contribution-Form.png)
 
 * As the author of the story, you will see accept buttons on contributions. Clicking this will add the contribution to the story.
 
-  ![Approve Button]()
+  ![Approve Button](docs/Approve-Button.png)
 
 ---
 
@@ -107,11 +103,11 @@
 
 * Authors can 'lock' a story they own at any time by clicking the 'Finish' button on their story.
 
-  ![Contributions Form]()
+  ![Finish Button](docs/Finish-Button.png)
 
 * Completing a story will remove all pending contributions, and prevent contributions from being created. The story will be marked as completed for other users to see.
 
-  ![Completed Story]()
+  ![Completed Story](docs/Completed-Story.png)
 
 ---
 
