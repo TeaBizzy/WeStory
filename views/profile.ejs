@@ -20,29 +20,46 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/userProfile.js"></script>
   <script defer src="/scripts/composer.js"></script>
+  <script defer src="/scripts/events.js"></script>
+  <script defer src="/scripts/story-creation.js"></script>
 </head>
 
-<body data-userid="<%= userId %>">
+<body data-userid="<%= id %>" data-profileid="<%= profileId%>">
   <header>
     <%- include('partials/_header') %>
   </header>
-  <section class="new-story">
-    <div class="new-story-header">
-      <span>Create New Story!</span>
+
+  <div class="responsive">
+    <section class="new-story">
+      <div class="new-story-header">
+        <span>Create New Story!</span>
+      </div>
+      <div class="new-story-content">
+        <i class="fa-solid fa-keyboard"></i>
+        <form method="POST" action="">
+          <textarea name="text" id="story-title" placeholder="Story Title"></textarea>
+          <textarea name="text" id="story-text" placeholder="Begin to write..."></textarea>
+          <div class="form-icons">
+            <button type="submit" class="fa-solid fa-check"></button>
+            <button type="reset" class="fa-regular fa-trash-can"></button>
+          </div>
+        </form>
+      </div>
+    </section>
+    <div class="error-exceed-max-chars">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <span class="error-message">You have exceeded the maximum characters in your story!</span>
+      <i class="fa-solid fa-triangle-exclamation"></i>
     </div>
-    <div class="new-story-content">
-      <i class="fa-solid fa-book"></i>
-      <form method="POST" action="">
-        <textarea name="text" id="story-text"></textarea>
-      </form>
+    <div class="error-empty-story">
+      <i class="fa-solid fa-triangle-exclamation"></i>
+      <span class="error-message">You cannot submit an empty story!</span>
+      <i class="fa-solid fa-triangle-exclamation"></i>
     </div>
-    <div class="form-icons">
-      <i class="fa-solid fa-check"></i>
-      <i class="fa-regular fa-trash-can"></i>
-    </div>
-  </section>
-  <span class="profile-header">Stories by @Username</span>
-  <section class="user-stories-container" id="user-stories-container"></section>
+    <span class="profile-header">Stories by @<%= username %></span>
+    <section class="user-stories-container" id="user-stories-container"></section>
+  </div>
+
   <div class="separator"></div>
   <footer>
     <i class="fa-solid fa-arrow-up"></i>

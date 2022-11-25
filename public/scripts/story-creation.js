@@ -9,15 +9,18 @@
 // _______________________________________________________________________ //
 // *----------------------------- Functions -----------------------------* //
 
-const submitStory = function(event) {
+const submitStory = function (event) {
   // Stop event bubbling
   event.preventDefault();
 
   // Setup variables
-  const textArea = $('#story-text');
+  const textArea = $("#story-text");
+  const titleArea = $("#story-title");
+
   const storyForm = textArea.parent();
   const content = textArea.val();
-  const user_id = $('body').attr('data-userId');
+  const title = titleArea.val()
+  const user_id = $("body").attr("data-userId");
   const contentLength = content.length;
 
   // Logs length, for testing... TODO: Replace this with a ui counter
@@ -25,27 +28,37 @@ const submitStory = function(event) {
 
   // Error handling
   if (contentLength > 160) {
-    console.log(`Error: Submission length is: ${contentLength} must be under 160 characters!`);
+    $(".error-empty-story").hide();
+    $(".error-exceed-max-chars").slideDown(300);
+    $(".new-story").css("margin-top", 0);
+    $('#story-text').focus();
     return;
-  }
-
-  if (contentLength <= 0) {
-    console.log(`Error: Submission can't be empty!`);
+  } else if (!contentLength) {
+    $(".error-exceed-max-chars").hide();
+    $(".error-empty-story").slideDown(300);
+    $(".new-story").css("margin-top", 0);
+    $('#story-text').focus();
     return;
+  } else {
+    $(".error-exceed-max-chars").slideUp(300);
+    $(".error-empty-story").slideUp(300);
+    $('#story-text').focus();
   }
 
   // Build the params object
   const newStory = {
     user_id,
     content,
-    title: `Story ${Math.floor(Math.random() * 1000)}`
+    title,
   };
 
   // Create story, and redirect user.
-  $.post('/api/stories', newStory)
-    .then(data => {
-      storyForm.trigger("reset");
-      const storyId = data.story.id;
-      window.location.href = `/stories/${storyId}`;
-    });
+  $.post("/api/stories", newStory).then((data) => {
+    storyForm.trigger("reset");
+    const storyId = data.story.id;
+    window.location.href = `/stories/${storyId}`;
+  });
 };
+
+$(".error-empty-tweet").hide();
+$(".error-exceed-max-chars").hide();

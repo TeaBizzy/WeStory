@@ -1,16 +1,19 @@
 $(document).ready(function () {
   // Click nav bar button to hide/show new story form
   $(".new-story").hide();
+  $(".error-empty-story").hide();
+  $(".error-empty-contribution").hide();
+  $(".error-exceed-max-chars").hide();
 
   $(".create-button").on("click", () => {
     if ($(".new-story").first().is(":hidden")) {
-      $(".new-story").slideDown(800);
-      $(".welcome").css("margin-top", 30);
-      $(".profile-header").css("margin-top", 30);
+      $(".new-story").slideDown(500);
+      $('#story-title').focus();
     } else {
-      $(".new-story").slideUp(800);
-      $(".welcome").css("margin-top", 150);
-      $(".profile-header").css("margin-top", 150);
+      $(".error-empty-story").hide();
+      $(".error-exceed-max-chars").hide();
+      $(".new-story").slideUp(500);
+
     }
   });
 

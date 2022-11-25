@@ -35,7 +35,7 @@ const getStoryById = (id) => {
 
 const getStoryByUserId = (user) => {
   return db.query(`
-  SELECT stories.id, creator_id, users.username, title, cover_url, content FROM stories
+  SELECT stories.id, creator_id, users.username, title, cover_url, is_completed, content FROM stories
   JOIN users ON users.id = creator_id
   WHERE users.id = ${user.id}
   GROUP BY users.username, stories.id;
@@ -45,11 +45,11 @@ const getStoryByUserId = (user) => {
     });
 };
 
-const updateStory = function(storyId, content) {
-  const queryParams = [storyId, content]
+const updateStory = function(storyId, content, completed) {
+  const queryParams = [storyId, content, completed]
   return db.query(`
     UPDATE stories
-    SET content = $2
+    SET content = $2, is_completed = $3
     WHERE id = $1
     RETURNING *;
   `, queryParams).then(data => {

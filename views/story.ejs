@@ -20,6 +20,7 @@
   <script src="/vendor/jquery-3.0.0.js"></script>
   <script defer src="/scripts/contribution-loader.js"></script>
   <script defer src="/scripts/contribution-creation.js"></script>
+  <script defer src="/scripts/upvote.js"></script>
   <script defer src="/scripts/story-loader.js"></script>
   <script defer src="/scripts/story-page.js"></script>
 </head>
@@ -40,16 +41,28 @@
     <article class="story">
       <div class="story-header">
         <div class="story-heading">
-          <span class="story-title">Lord of the Things</span>
-          <span class="story-creator-handle">@creator-username</span>
+          <span class="story-title"><%= title %></span>
+          <span class="story-creator-handle">@<%= username %></span>
         </div>
-          <span class="image">INSERT IMAGE</span>
+        <div class="cover-content">
+          <img src="<%= coverImg %>" class="image">
+        </div>
       </div>
       <div class="story-content">
       </div>
     </article>
   </section>
   <span class="toggle-contributions">View Contributions</span>
+  <div class="error-exceed-max-chars">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span class="error-message">You have exceeded the maximum characters in your contribution!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
+  <div class="error-empty-contribution">
+    <i class="fa-solid fa-triangle-exclamation"></i>
+    <span class="error-message">You cannot submit an empty contribution!</span>
+    <i class="fa-solid fa-triangle-exclamation"></i>
+  </div>
   <section class="new-contribution">
     <form>
       <textarea name="text" id="contribution-text" placeholder="Start writing to contribute!"></textarea>
