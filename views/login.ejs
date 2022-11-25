@@ -31,11 +31,13 @@
   <div class="second-prompt">
     <span>Login to begin writing!</span>
   </div>
-  <form method="POST" action="" id="login-form">
-    <input type="text" id="user-email" placeholder="Email"></input>
-    <input type="password" id="user-password" placeholder="Password"></input>
+  <form method="POST" action="/login" id="login-form">
+    <input type="text" name="username" id="user-email" placeholder="Email"></input>
+    <input type="password" name="password" id="user-password" placeholder="Password"></input>
+    <button type="submit" class="buttons">
+      <span class="login-button">Login</span>
+    </button
   </form>
-  <span class="login-button">Login</span>
   <div class="registration">
     <span class="register-prompt">Not a member?</span>
     <span class="register-button">Register</span>
