@@ -170,6 +170,8 @@ form {
   font-size: 26px;
   border: hidden;
   resize: none;
+  padding-left: 1em;
+  padding-top: 2.5em;
 }
 
 .fa-keyboard {
