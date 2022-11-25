@@ -25,6 +25,7 @@ const loadContributions = function () {
         totalCountByUser(data.contributions); // check to see if this is needed;
 
         renderContributions(data.contributions, data.upvotedUser);
+        $('.approve-button').on('click', event => acceptContribution(event))
         resolve(data.contributions, data.upvotedUser);
         showAuthorControls();
       }).then(() => {
@@ -63,10 +64,11 @@ const loadContributions = function () {
   return promise;
 };
 
-const renderContributions = function (contributions, upvotedUsers) {
+const renderContributions = function (loadedContributions, upvotedUsers) {
   const container = $(".contributions-container");
   container.empty();
-  for (const contribution of contributions) {
+  for (const contribution of loadedContributions) {
+    contributions.push(contribution)
     let upvoted = false;
     for (const upvotedUser of upvotedUsers) {
       if (contribution.contribution_id === upvotedUser.contribution_id) {

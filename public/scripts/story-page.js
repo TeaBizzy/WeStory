@@ -1,5 +1,5 @@
 let story;
-let contributions;
+let contributions = [];
 let isAuthor = false;
 
 $(document).ready(function () {
@@ -36,7 +36,6 @@ const initPage = function () {
   Promise.all([loadStory(), loadContributions()]).then((values) => {
     // Declare variables
     story = values[0];
-    contributions = values[1];
     const creator_id = story.creator_id;
     const user_id = Number($("body").attr("data-userid"));
     isAuthor = creator_id === user_id;
@@ -86,25 +85,7 @@ const registerEvents = function () {
     completeStory();
   });
 
-  approveButtons.on("click", (event) => {
-    event.preventDefault();
-    const storyId = Number($("body").attr("data-storyid"));
-    const selectedContribution = event.target.closest(".contribution");
-    const id = Number(selectedContribution.attributes[1].value);
-    let content;
-
-    for (const contribution of contributions) {
-      if (contribution.contribution_id === id) {
-        content = contribution.content;
-        break;
-      }
-    }
-
-    const fullContent = story.content + "\n" + content;
-    const params = { storyId, fullContent, completed: false };
-
-    updateStory(params);
-  });
+  approveButtons.on("click", event => acceptContribution(event))
   contributionTextArea.submit(submitContribution);
 };
 
@@ -122,4 +103,24 @@ const updateStory = function (params) {
 const completeStory = function () {
   $(".new-contribution").remove();
   $(".contributions-container").remove();
+};
+
+const acceptContribution = function(event) {
+  event.preventDefault();
+  const storyId = Number($("body").attr("data-storyid"));
+  const selectedContribution = event.target.closest(".contribution");
+  const id = Number(selectedContribution.attributes[1].value);
+  let content;
+
+  for (const contribution of contributions) {
+    if (contribution.contribution_id === id) {
+      content = contribution.content;
+      break;
+    }
+  }
+
+  const fullContent = story.content + "\n" + content;
+  const params = { storyId, fullContent, completed: false };
+
+  updateStory(params);
 };
