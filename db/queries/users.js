@@ -8,7 +8,7 @@ const getUser = (user) => {
   AND password = $2
   `, [user.username, user.password])
     .then(data => {
-      return data.rows;
+      return data.rows[0];
     });
 };
 

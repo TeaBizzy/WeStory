@@ -14,6 +14,7 @@
 const express = require('express');
 const { use } = require('./users-api');
 const router  = express.Router();
+const userQueries = require('../../db/queries/users');
 
 
 // ___________________________________________________________________________ //
@@ -32,6 +33,28 @@ router.get('/', (req, res) => {
   }
 
   res.render('../views/login.ejs');
+});
+
+
+router.post('/', (req, res) => {
+  // Get session cookie
+  const sessionCookie = req.session.user_id;
+  const isLoggedIn = sessionCookie ? true : false;
+
+  // Redirect if logged in
+  if (isLoggedIn) {
+    return res.redirect('/stories');
+  }
+
+  const username = req.body.username;
+  const password = req.body.password
+
+  userQueries.getUser({username, password})
+  .then((user) => {
+    // Create session cookie
+    req.session.user_id = user.id;
+    res.redirect('/stories');
+  })
 });
 
 // Logs the user in
