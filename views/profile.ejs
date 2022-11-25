@@ -22,6 +22,7 @@
   <script defer src="/scripts/composer.js"></script>
   <script defer src="/scripts/events.js"></script>
   <script defer src="/scripts/story-creation.js"></script>
+  <script defer src="/scripts/char-counter.js"></script>
 </head>
 
 <body data-userid="<%= id %>" data-profileid="<%= profileId%>">
@@ -39,9 +40,12 @@
         <form method="POST" action="">
           <textarea name="text" id="story-title" placeholder="Story Title"></textarea>
           <textarea name="text" id="story-text" placeholder="Begin to write..."></textarea>
-          <div class="form-icons">
-            <button type="submit" class="fa-solid fa-check"></button>
-            <button type="reset" class="fa-regular fa-trash-can"></button>
+          <div class="form-footer">
+            <output name="counter" class="counter" for="story-text">160</output>
+            <div class="form-icons">
+              <button type="submit" class="fa-solid fa-check"></button>
+              <button type="reset" class="fa-regular fa-trash-can"></button>
+            </div>
           </div>
         </form>
       </div>

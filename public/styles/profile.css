@@ -146,7 +146,7 @@ nav {
   margin: 0 48px 0px 48px;
   background-color: #EEEEEE;
   outline: solid #2196F3 2px;
-  height: 220px;
+  height: 300px;
   box-shadow: 5px 5px 4px gray;
 }
 
@@ -183,7 +183,7 @@ form {
 #story-text {
   background-color: #EEEEEE;
   width: 80%;
-  height: 60px;
+  height: 140px;
   font-family: "Quicksand", cursive;
   font-size: 26px;
   border: hidden;
@@ -198,11 +198,18 @@ form {
   padding-right: 20px;
 }
 
+.counter {
+  font-family: 'Quicksand', cursive;
+  font-size: 20px;
+  color: #2196F3;
+  font-weight: bold;
+}
+
 .form-icons {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-top: -15px;
+  margin-top: -35px;
 }
 
 .fa-check {

@@ -23,6 +23,7 @@
   <script defer src="/scripts/upvote.js"></script>
   <script defer src="/scripts/story-loader.js"></script>
   <script defer src="/scripts/story-page.js"></script>
+  <script defer src="/scripts/char-counter.js"></script>
 </head>
 
 <body data-storyid="<%= storyId %>" data-userid="<%= id %>">
@@ -66,9 +67,12 @@
   <section class="new-contribution">
     <form>
       <textarea name="text" id="contribution-text" placeholder="Start writing to contribute!"></textarea>
-      <div class="form-icons">
-        <button type="submit" class="fa-solid fa-check"></button>
-        <button type="reset" class="fa-regular fa-trash-can"></button>
+      <div class="form-footer">
+        <output name="counter" class="counter" for="contribution-text">160</output>
+        <div class="form-icons">
+          <button type="submit" class="fa-solid fa-check"></button>
+          <button type="reset" class="fa-regular fa-trash-can"></button>
+        </div>
       </div>
     </form>
   </section>

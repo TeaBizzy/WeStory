@@ -248,11 +248,19 @@ form {
   resize: none;
 }
 
+.counter {
+  font-family: 'Quicksand', cursive;
+  font-size: 20px;
+  color: #2196F3;
+  font-weight: bold;
+  margin-left: 10px;
+}
+
 .form-icons {
   display: flex;
   align-items: center;
   justify-content: flex-end;
-  margin-top: -15px;
+  margin-top: -35px;
 }
 
 .fa-check {
