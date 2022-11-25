@@ -138,7 +138,7 @@ nav {
 }
 
 .new-story {
-  margin: 155px 48px 0px 48px;
+  margin: 0 48px 0px 48px;
   background-color: #EEEEEE;
   outline: solid #2196F3 2px;
   height: 220px;
@@ -171,9 +171,11 @@ form {
   resize: none;
 }
 
-.fa-book {
-  font-size: 100px;
-  margin: 30px 20px 10px 20px;
+.fa-keyboard {
+  font-size: 80px;
+  margin: 40px 20px 10px 40px;
+  color: #FFA726;
+  text-shadow: -5px 0 #e65100, 0 5px #2196f3, 5px 0 #2196f3, 0 -5px #2196f3;
 }
 
 .form-icons {
@@ -225,9 +227,8 @@ textarea:focus {
   outline: none;
 }
 
-
 .profile-header {
-  margin: 155px 0px 10px 48px;
+  margin: 20px 0px 10px 48px;
   font-family: "Quicksand", cursive;
   font-size: 35px;
   font-weight: bold;
@@ -236,6 +237,12 @@ textarea:focus {
 .fa-book {
   font-size: 100px;
   margin: 35px 20px 10px 20px;
+}
+
+.responsive {
+  display: flex;
+  flex-direction: column;
+  padding-top: 155px;
 }
 
 .user-stories-container {
