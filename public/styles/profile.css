@@ -4,6 +4,11 @@ body {
   background-color: #FFFFFF;
 }
 
+::placeholder { /* Chrome, Firefox, Opera, Safari 10.1+ */
+  color: #c0c0c0;
+  opacity: 1; /* Firefox */
+}
+
 nav {
   display: flex;
   flex-direction: row;
@@ -118,7 +123,7 @@ nav {
   font-weight: bold;
   border: 3px solid red;
   height: 50px;
-  margin: 150px 48px 15px 48px;
+  margin: 20px 48px 15px 48px;
 }
 
 .error-empty-story {
@@ -130,7 +135,7 @@ nav {
   font-weight: bold;
   border: 3px solid red;
   height: 50px;
-  margin: 150px 48px 15px 48px;
+  margin: 20px 48px 15px 48px;
 }
 
 .error-message {
@@ -138,7 +143,7 @@ nav {
 }
 
 .new-story {
-  margin: 155px 48px 0px 48px;
+  margin: 0 48px 0px 48px;
   background-color: #EEEEEE;
   outline: solid #2196F3 2px;
   height: 220px;
@@ -161,19 +166,36 @@ form {
   width: 100%;
 }
 
+#story-title {
+  resize: none;
+  overflow-y: hidden;
+  height: 45px;
+  width: 80%;
+  font-family: "Bebas Neue", cursive;
+  font-size: 30px;
+  background: transparent;
+  border-color: transparent;
+  border-bottom-color: #2196f3;
+  border-bottom-width: thick;
+  margin-top: 1em;
+}
+
 #story-text {
   background-color: #EEEEEE;
-  width: 100%;
-  height: 128px;
+  width: 80%;
+  height: 60px;
   font-family: "Quicksand", cursive;
   font-size: 26px;
   border: hidden;
   resize: none;
 }
 
-.fa-book {
-  font-size: 100px;
-  margin: 30px 20px 10px 20px;
+.fa-keyboard {
+  font-size: 80px;
+  margin: 40px 20px 10px 40px;
+  color: #FFA726;
+  text-shadow: -5px 0 #e65100, 0 5px #2196f3, 5px 0 #2196f3, 0 -5px #2196f3;
+  padding-right: 20px;
 }
 
 .form-icons {
@@ -225,9 +247,8 @@ textarea:focus {
   outline: none;
 }
 
-
 .profile-header {
-  margin: 155px 0px 10px 48px;
+  margin: 20px 0px 10px 48px;
   font-family: "Quicksand", cursive;
   font-size: 35px;
   font-weight: bold;
@@ -236,6 +257,12 @@ textarea:focus {
 .fa-book {
   font-size: 100px;
   margin: 35px 20px 10px 20px;
+}
+
+.responsive {
+  display: flex;
+  flex-direction: column;
+  padding-top: 155px;
 }
 
 .user-stories-container {
@@ -299,17 +326,21 @@ textarea:focus {
 .story-paragraph {
   font-family: "Quicksand", cursive;
   font-size: 2.5vw;
-  margin-top: 2vw;
-  margin-bottom: 2vw;
-  padding-right: 1vw;
-  width: 100%;
+  margin: 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical;
+  overflow-wrap: break-word;
 }
 
 .status {
   display: flex;
   flex-direction: column;
-  align-items: center;
   justify-content: center;
+  flex-grow: 1;
+  align-items: end;
   margin-right: 15px;
 }
 
@@ -385,7 +416,6 @@ footer {
   .story-paragraph {
     font-family: "Quicksand", cursive;
     font-size: 26px;
-    margin-top: 30px;
   }
   .cover-content img {
     max-height: 155px;
