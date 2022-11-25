@@ -55,6 +55,9 @@ router.post('/', (req, res) => {
     req.session.user_id = user.id;
     res.redirect('/stories');
   })
+  .catch(() => {
+    res.redirect('/login')
+  });
 });
 
 // Logs the user in
